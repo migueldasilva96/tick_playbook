@@ -7,7 +7,7 @@
     - "8086:8086"
     - "8086:8086/udp"
     env:
-        INFLUXDB_DB="db0"
+        INFLUXDB_DB="db1"
         INFLUXDB_ADMIN_ENABLED="true"
         INFLUXDB_ADMIN_USER="admin"
         INFLUXDB_ADMIN_PASSWORD="it1234"
@@ -48,4 +48,3 @@
     volumes:
     - /chronograf_storage
     command: --influxdb-url=http://192.168.85.147:8086
-
