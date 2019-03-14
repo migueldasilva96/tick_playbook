@@ -25,3 +25,27 @@
     - "3000:3000"
     volumes:
     - /grafana_storage
+
+- name: "<.<.<.<.<.<.<.<.<.< kapacitor CONTAINER >.>.>.>.>.>.>.>.>.>"
+  docker:
+    name: tick_kapacitor
+    image: kapacitor:latest
+    state: started
+    restart_policy: always
+    ports:
+    - "9092:9092"
+    volumes:
+    - /kapacitor_storage
+
+- name: "<.<.<.<.<.<.<.<.<.< chronograf CONTAINER >.>.>.>.>.>.>.>.>.>"
+  docker:
+    name: tick_chronograf
+    image: chronograf:latest
+    state: started
+    restart_policy: always
+    ports:
+    - "8888:8888"
+    volumes:
+    - /chronograf_storage
+    command: --influxdb-url=http://192.168.85.147:8086
+
