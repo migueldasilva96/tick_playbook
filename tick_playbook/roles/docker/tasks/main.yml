@@ -26,6 +26,3 @@
     - docker-ce
     - docker-ce-cli
     - containerd.io
-
-#- name: "Instalação Docker-py"
-#  shell: 'pip install docker-py'
