@@ -1,0 +1,27 @@
+- name: "<.<.<.<.<.<.<.<.<.< INFLUXDB CONTAINER >.>.>.>.>.>.>.>.>.>"
+  docker:
+    name: tick_influxdb
+    image: influxdb:latest
+    state: started
+    ports:
+    - "8086:8086"
+    - "8086:8086/udp"
+    env:
+        INFLUXDB_DB="db0"
+        INFLUXDB_ADMIN_ENABLED="true"
+        INFLUXDB_ADMIN_USER="admin"
+        INFLUXDB_ADMIN_PASSWORD="it1234"
+        INFLUXDB_USER="telegraf"
+        INFLUXDB_USER_PASSWORD="telegraf"
+    volumes:
+    - /influxdb_storage
+
+- name: "<.<.<.<.<.<.<.<.<.< GRAFANA CONTAINER >.>.>.>.>.>.>.>.>.>"
+  docker:
+    name: tick_grafana
+    image: grafana/grafana:latest
+    state: started
+    ports:
+    - "3000:3000"
+    volumes:
+    - /grafana_storage
