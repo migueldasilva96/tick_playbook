@@ -26,7 +26,7 @@
     volumes:
     - /grafana_storage
 
-- name: "<.<.<.<.<.<.<.<.<.< kapacitor CONTAINER >.>.>.>.>.>.>.>.>.>"
+- name: "<.<.<.<.<.<.<.<.<.< KAPACITOR CONTAINER >.>.>.>.>.>.>.>.>.>"
   docker:
     name: tick_kapacitor
     image: kapacitor:latest
@@ -37,7 +37,7 @@
     volumes:
     - /kapacitor_storage
 
-- name: "<.<.<.<.<.<.<.<.<.< chronograf CONTAINER >.>.>.>.>.>.>.>.>.>"
+- name: "<.<.<.<.<.<.<.<.<.< CHRONOGRAF CONTAINER >.>.>.>.>.>.>.>.>.>"
   docker:
     name: tick_chronograf
     image: chronograf:latest
