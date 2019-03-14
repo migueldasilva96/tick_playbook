@@ -7,14 +7,18 @@
     - gnupg-agent
     - software-properties-common
     - python-pip
+
 - pip:
     name: docker-py
 
 - name: "Adicionar chave repositório Docker"
-  shell: 'curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -'
+ apt_key:
+   keyserver: https://download.docker.com/linux/ubuntu/gpg
+   id: 9DC858229FC7DD38854AE2D88D81803C0EBFCD88
 
-- name: "Adicionar repositório Docker"
-  shell: 'add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable"'
+- apt_repository:
+   repo: https://download.docker.com/linux/ubuntu bionic stable
+   state: present
 
 - name: "Atualizar repositórios"
   apt:
