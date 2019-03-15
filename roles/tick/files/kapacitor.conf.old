@@ -1,0 +1,36 @@
+hostname = "tick_kapacitor"
+data_dir = "var/lib/kapacitor"
+
+[http]
+  bind-address = ":9092"
+  auth-enabled = false
+  log-enabled = true
+  write-tracing = false
+  pprof-enabled = false
+  https-enabled = false
+  https-certificate = "/etc/ssl/kapacitor.pem"
+
+[[udp]]
+  enabled = true
+  bind-address = ":9100"
+  database = "db0"
+  retention-policy = "autogen"
+
+[logging]
+  file = "/var/log/kapacitor/kapacitor.log"
+  level = "INFO"
+
+[replay]
+  dir = "/var/lib/kapacitor/replay"
+
+[task]
+  dir = "/var/lib/kapacitor/tasks"
+
+[influxdb]
+  enabled = true
+  urls = ["http://localhost:8086"]
+  username = "admin"
+  password = "it1234"
+  timeout = 0
+  [influxdb.subscriptions]
+    db0 = [ "default", "autogen"]
