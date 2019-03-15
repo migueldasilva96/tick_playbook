@@ -86,8 +86,5 @@
     volumes:
     - chronograf_data:/etc/chronograf
     - chronograf_storage:/var/lib/chronograf
-<<<<<<< HEAD
     command: --influxdb-url=http://{{hostvars[inventory_hostname]['ansible_default_ipv4']['address']}}:8086 --kapacitor-url=http://{{hostvars[inventory_hostname]['ansible_default_ipv4']['address']}}:9092
-=======
-    command: --influxdb-url=http://192.168.85.147:8086 --kapacitor-url=http://192.168.85.79:9092
->>>>>>> 2243e02caab9d3e1cd2ebf27688f78f38d095eef
+
