@@ -9,7 +9,10 @@
     - python-pip
 
 - pip:
-    name: docker-py
+    name:
+      - docker 
+      - docker-py
+    state: forcereinstall
 
 - name: "Adicionar chave repositório Docker"
   apt_key:
