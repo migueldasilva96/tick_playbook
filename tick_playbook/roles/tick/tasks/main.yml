@@ -1,3 +1,7 @@
+- name: "<.<.<.<.<.<.<.<.<.< INFLUXDB VOLUME >.>.>.>.>.>.>.>.>.>"
+  docker_volume:
+    name: influxdb_storage
+
 - name: "<.<.<.<.<.<.<.<.<.< INFLUXDB CONTAINER >.>.>.>.>.>.>.>.>.>"
   docker:
     name: tick_influxdb
@@ -16,6 +20,10 @@
     volumes:
     - /influxdb_storage
 
+- name: "<.<.<.<.<.<.<.<.<.< GRAFANA VOLUME >.>.>.>.>.>.>.>.>.>"
+  docker_volume:
+    name: grafana_storage
+
 - name: "<.<.<.<.<.<.<.<.<.< GRAFANA CONTAINER >.>.>.>.>.>.>.>.>.>"
   docker:
     name: tick_grafana
@@ -25,6 +33,10 @@
     - "3000:3000"
     volumes:
     - /grafana_storage
+
+- name: "<.<.<.<.<.<.<.<.<.< KAPACITOR VOLUME >.>.>.>.>.>.>.>.>.>"
+  docker_volume:
+    name: kapacitor_storage
 
 - name: "<.<.<.<.<.<.<.<.<.< KAPACITOR CONTAINER >.>.>.>.>.>.>.>.>.>"
   docker:
@@ -36,6 +48,10 @@
     - "9092:9092"
     volumes:
     - /kapacitor_storage
+
+- name: "<.<.<.<.<.<.<.<.<.< CHRONOGRAF VOLUME >.>.>.>.>.>.>.>.>.>"
+  docker_volume:
+    name: chronograf_storage
 
 - name: "<.<.<.<.<.<.<.<.<.< CHRONOGRAF CONTAINER >.>.>.>.>.>.>.>.>.>"
   docker:
