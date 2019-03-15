@@ -86,4 +86,4 @@
     volumes:
     - chronograf_data:/etc/chronograf
     - chronograf_storage:/var/lib/chronograf
-    command: --influxdb-url=http://192.168.85.147:8086
+    command: --influxdb-url=http://192.168.85.147:8086 --kapacitor-url=http://192.168.85.79:9092
