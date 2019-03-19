@@ -1,0 +1,8 @@
+- name: Copy tickscripts
+  copy:
+    src: /home/debian/github/tick_playbook/roles/alertas
+    dest: /var/lib/docker/volumes/kapacitor_storage/_data/ 
+
+- name: Execute tickscripts
+
+

@@ -1,0 +1,10 @@
+- name: Copy tickscripts
+  copy:
+    src: /home/debian/github/tick_playbook/roles/alertas
+    dest: /var/lib/docker/volumes/kapacitor_storage/_data/ 
+
+- name: Execute tickscripts
+#  shell: bash /home/debian/teste.sh
+  shell: docker exec tick_kapacitor bash /var/lib/kapacitor/alertas/run_alertas.sh
+#  shell: chmod 755 /var/lib/docker/volumes/kapacitor_storage/_data/alertas/*.*;bash /var/lib/docker/volumes/kapacitor_storage/_data/alertas/run_alertas.sh 
+
