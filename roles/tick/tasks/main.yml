@@ -1,8 +1,8 @@
-- name: <.<.<.<.<.<.<.<.<.< CREATING INFLUXDB VOLUMES >.>.>.>.>.>.>.>.>.>
+- name: "############### CREATING INFLUXDB VOLUMES ###############"
   shell: docker volume create --name influxdb_storage | docker volume create --name influxdb_data
 
-- name: "<.<.<.<.<.<.<.<.<.< SETTING UP INFLUXDB CONTAINER >.>.>.>.>.>.>.>.>.>"
-  docker:
+- name: "############### SETTING UP INFLUXDB CONTAINER ###############"
+  docker_container:
     name: tick_influxdb
     image: influxdb:latest
     state: started
@@ -20,7 +20,7 @@
       - influxdb_storage:/var/lib/influxdb
       - influxdb_data:/etc/influxdb
 
-- name: "<.<.<.<.<.<.<.<.<.< SETTNG INFLUXDB CONFIGURATION >.>.>.>.>.>.>.>.>.>"
+- name: "############### SETTNG INFLUXDB CONFIGURATION ###############"
   copy:
     src: roles/tick/files/influxdb.conf
     dest: /var/lib/docker/volumes/influxdb_data/_data
@@ -29,14 +29,14 @@
     mode: 0644
     backup: yes
 
-- name: "<.<.<.<.<.<.<.<.<.< APPLYING INFLUXDB CONFIGURATION >.>.>.>.>.>.>.>.>.>"
+- name: "############### APPLYING INFLUXDB CONFIGURATION ###############"
   shell: docker restart tick_influxdb
 
-- name: <.<.<.<.<.<.<.<.<.< CREATING GRAFANA VOLUMES >.>.>.>.>.>.>.>.>.>
+- name: "############### CREATING GRAFANA VOLUMES ###############"
   shell: docker volume create --name grafana_storage | docker volume create --name grafana_data
 
-- name: "<.<.<.<.<.<.<.<.<.< SETTING UP GRAFANA CONTAINER >.>.>.>.>.>.>.>.>.>"
-  docker:
+- name: "############### SETTING UP GRAFANA CONTAINER ###############"
+  docker_container:
     name: tick_grafana
     image: grafana/grafana:latest
     state: started
@@ -46,21 +46,23 @@
     - grafana_storage:/var/lib/grafana
     - grafana_data:/etc/grafana
 
-- name: <.<.<.<.<.<.<.<.<.< CREATING KAPACITOR VOLUMES >.>.>.>.>.>.>.>.>.>
+- name: "############### CREATING KAPACITOR VOLUMES ###############"
   shell: docker volume create --name kapacitor_data | docker volume create --name kapacitor_storage
 
-- name: "<.<.<.<.<.<.<.<.<.< SETTING UP KAPACITOR CONTAINER >.>.>.>.>.>.>.>.>.>"
-  docker:
+- name: "############### SETTING UP KAPACITOR CONTAINER ###############"
+  docker_container:
     name: tick_kapacitor
     image: kapacitor:latest
     state: started
     ports:
     - "9092:9092"
+    env:
+        KAPACITOR_INFLUXDB_0_URLS_0=http://{{hostvars[inventory_hostname]['ansible_default_ipv4']['address']}}:8086
     volumes:
     - kapacitor_data:/etc/kapacitor
     - kapacitor_storage:/var/lib/kapacitor
 
-- name: "<.<.<.<.<.<.<.<.<.< SETTING KAPACITOR CONFIGURATION >.>.>.>.>.>.>.>.>.>"
+- name: "############### SETTING KAPACITOR CONFIGURATION ###############"
   copy:
     src: roles/tick/files/kapacitor.conf
     dest: /var/lib/docker/volumes/kapacitor_data/_data
@@ -69,14 +71,14 @@
     mode: 0644
     backup: yes
 
-- name: "<.<.<.<.<.<.<.<.<.< APPLYING KAPACITOR CONFIGURATION >.>.>.>.>.>.>.>.>.>"
+- name: "############### APPLYING KAPACITOR CONFIGURATION ###############"
   shell: docker restart tick_kapacitor
 
-- name: <.<.<.<.<.<.<.<.<.< CREATING CHRONOGRAF VOLUMES >.>.>.>.>.>.>.>.>.>
+- name: "############### CREATING CHRONOGRAF VOLUMES ###############"
   shell: docker volume create --name chronograf_storage | docker volume create --name chronograf_data
 
-- name: "<.<.<.<.<.<.<.<.<.< SETTING UP CHRONOGRAF CONTAINER >.>.>.>.>.>.>.>.>.>"
-  docker:
+- name: "############### SETTING UP CHRONOGRAF CONTAINER ###############"
+  docker_container:
     name: tick_chronograf
     image: chronograf:latest
     state: started

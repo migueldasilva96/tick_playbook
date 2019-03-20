@@ -1,4 +1,4 @@
-- name: "Instalação pacotes essenciais"
+- name: "##############Instalação pacotes essenciais##############"
   apt: name={{ item }}
   with_items:
     - apt-transport-https
@@ -14,20 +14,22 @@
       - docker-py
     state: forcereinstall
 
-- name: "Adicionar chave repositório Docker"
+- name: "##############Adicionar chave repositório Docker##############"
   apt_key:
-    keyserver: https://download.docker.com/linux/ubuntu/gpg
-    id: 9DC858229FC7DD38854AE2D88D81803C0EBFCD88
+    url: https://download.docker.com/linux/ubuntu/gpg
+    state: present
+    #keyserver: https://download.docker.com/linux/ubuntu/gpg
+    #id: 9DC858229FC7DD38854AE2D88D81803C0EBFCD88
 
 - apt_repository:
    repo: deb https://download.docker.com/linux/ubuntu bionic stable
    state: present
 
-- name: "Atualizar repositórios"
+- name: "##############Atualizar repositórios##############"
   apt:
     update_cache: yes
 
-- name: "Instalação Docker"
+- name: "##############Instalação Docker##############"
   apt: name={{ item }}
   with_items:
     - docker-ce
