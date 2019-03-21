@@ -46,6 +46,37 @@
     - grafana_storage:/var/lib/grafana
     - grafana_data:/etc/grafana
 
+- name: "############### SETTING UP GRAFANA CONFIGURATION ###############"
+  become: yes
+  copy:
+    src: roles/tick/files/grafana.ini
+    dest: /var/lib/docker/volumes/grafana_data/_data
+
+- name: "############### APPLYING GRAFANA CONFIGURATION ###############"
+  shell: docker restart tick_grafana
+
+- name: "############### SETTING UP GRAFANA DASHBOARDS ###############"
+  become: yes
+  copy:
+    src: "{{ item }}"
+    dest: /var/lib/docker/volumes/grafana_data/_data/provisioning/dashboards
+    owner: root
+    mode: 0644
+  with_fileglob:
+    - roles/tick/files/GRAFANA_DASHBOARDS/*
+
+- name: "############### APPLYING GRAFANA DASHBOARDS STEP 1 ###############"
+  become: yes
+  copy:
+    src: roles/tick/files/dashboard.yaml
+    dest: /var/lib/docker/volumes/grafana_data/_data/provisioning/dashboards
+    owner: root
+    mode: 0644
+
+- name: "############### APPLYING GRAFANA DASHBOARDS STEP 2 ###############"
+  become: yes
+  shell: docker restart tick_grafana
+
 - name: "############### CREATING KAPACITOR VOLUMES ###############"
   shell: docker volume create --name kapacitor_data | docker volume create --name kapacitor_storage
 
