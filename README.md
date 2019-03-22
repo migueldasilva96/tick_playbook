@@ -1,3 +1,4 @@
+```html
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=5,IE=9" ><![endif]-->
 <!DOCTYPE html>
 <html>
@@ -9,3 +10,4 @@
 <script type="text/javascript" src="https://www.draw.io/js/viewer.min.js"></script>
 </body>
 </html>
+```
