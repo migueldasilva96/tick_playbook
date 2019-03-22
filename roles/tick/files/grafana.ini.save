@@ -1,2 +1,0 @@
-- name: "############### APPLYING GRAFANA DASHBOARDS STEP 2 ###############"
-  shell: docker restart tick_grafana

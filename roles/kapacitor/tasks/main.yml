@@ -1,0 +1,29 @@
+- name: "############### CREATING KAPACITOR VOLUMES ###############"
+  shell: docker volume create --name kapacitor_data | docker volume create --name kapacitor_storage
+
+- name: "############### SETTING UP KAPACITOR CONTAINER ###############"
+  docker_container:
+    name: tick_kapacitor
+    image: kapacitor:latest
+    state: started
+    restart_policy: always
+    ports:
+    - "9092:9092"
+    env:
+        KAPACITOR_INFLUXDB_0_URLS_0=http://{{hostvars[inventory_hostname]['ansible_default_ipv4']['address']}}:8086
+        KAPACITOR_HOSTNAME="{{hostvars[inventory_hostname]['ansible_default_ipv4']['address']}}"
+    volumes:
+    - kapacitor_data:/etc/kapacitor
+    - kapacitor_storage:/var/lib/kapacitor
+
+- name: "############### SETTING KAPACITOR CONFIGURATION ###############"
+  copy:
+    src: roles/kapacitor/files/kapacitor.conf
+    dest: /var/lib/docker/volumes/kapacitor_data/_data
+    owner: root
+    group: root
+    mode: 0644
+    backup: yes
+
+- name: "############### APPLYING KAPACITOR CONFIGURATION ###############"
+  shell: docker restart tick_kapacitor

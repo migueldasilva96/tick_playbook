@@ -1,0 +1,35 @@
+- name: "############### CREATING INFLUXDB VOLUMES ###############"
+  shell: docker volume create --name influxdb_storage | docker volume create --name influxdb_data
+
+
+- name: "############### SETTING UP INFLUXDB CONTAINER ###############"
+  docker_container:
+    name: tick_influxdb
+    image: influxdb:latest
+    state: started
+    restart_policy: always
+    ports:
+    - "8086:8086"
+    - "8086:8086/udp"
+    env:
+        INFLUXDB_DB="{{ database }}"
+        INFLUXDB_ADMIN_ENABLED="true"
+        INFLUXDB_ADMIN_USER="{{ admin }}"
+        INFLUXDB_ADMIN_PASSWORD="{{ admin_password }}"
+        INFLUXDB_USER="{{ user }}"
+        INFLUXDB_USER_PASSWORD="{{ user_password }}"
+    volumes:
+      - influxdb_storage:/var/lib/influxdb
+      - influxdb_data:/etc/influxdb
+
+- name: "############### SETTNG INFLUXDB CONFIGURATION ###############"
+  copy:
+    src: roles/influxdb/files/influxdb.conf
+    dest: /var/lib/docker/volumes/influxdb_data/_data
+    owner: root
+    group: root
+    mode: 0644
+    backup: yes
+
+- name: "############### APPLYING INFLUXDB CONFIGURATION ###############"
+  shell: docker restart tick_influxdb

@@ -1,0 +1,16 @@
+- name: "############### CREATING CHRONOGRAF VOLUMES ###############"
+  shell: docker volume create --name chronograf_storage | docker volume create --name chronograf_data
+
+- name: "############### SETTING UP CHRONOGRAF CONTAINER ###############"
+  docker_container:
+    name: tick_chronograf
+    image: chronograf:latest
+    state: started
+    restart_policy: always
+    ports:
+    - "8888:8888"
+    volumes:
+    - chronograf_data:/etc/chronograf
+    - chronograf_storage:/var/lib/chronograf
+    command: --influxdb-url=http://{{hostvars[inventory_hostname]['ansible_default_ipv4']['address']}}:8086 --kapacitor-url=http://{{hostvars[inventory_hostname]['ansible_default_ipv4']['address']}}:9092
+

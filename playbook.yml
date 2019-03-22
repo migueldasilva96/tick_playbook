@@ -6,5 +6,36 @@
 
 - hosts: all
   become: true
+  vars_prompt:
+    - name: database
+      private: no
+      prompt: "INSIRA NOME DA BASE DE DADOS A CRIAR:"
+    - name: admin
+      private: no
+      prompt: "INSIRA USERNAME DE ADMINISTRADOR:"
+    - name: admin_password
+      private: yes
+      prompt: "DEFINA A PASSWORD DE ADMINISTRADOR:"
+    - name: user
+      private: no
+      prompt: "INSIRA O NOME DE UTILIZADOR PARA A BASE DE DADOS:"
+    - name: user_password
+      private: yes
+      prompt: "DEFINA A PASSWORD DO UTILIZADOR:"
   roles:
-    - tick
+    - influxdb
+
+- hosts: all
+  become: true
+  roles:
+    - grafana
+
+- hosts: all
+  become: true
+  roles:
+    - kapacitor
+
+- hosts: all
+  become: true
+  roles:
+    - chronograf
