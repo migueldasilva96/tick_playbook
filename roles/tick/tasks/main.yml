@@ -6,6 +6,7 @@
     name: tick_influxdb
     image: influxdb:latest
     state: started
+    restart_policy: always
     ports:
     - "8086:8086"
     - "8086:8086/udp"
@@ -40,6 +41,7 @@
     name: tick_grafana
     image: grafana/grafana:latest
     state: started
+    restart_policy: always
     ports:
     - "3000:3000"
     volumes:
@@ -85,6 +87,7 @@
     name: tick_kapacitor
     image: kapacitor:latest
     state: started
+    restart_policy: always
     ports:
     - "9092:9092"
     env:
