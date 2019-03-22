@@ -89,6 +89,7 @@
     - "9092:9092"
     env:
         KAPACITOR_INFLUXDB_0_URLS_0=http://{{hostvars[inventory_hostname]['ansible_default_ipv4']['address']}}:8086
+        KAPACITOR_HOSTNAME="{{hostvars[inventory_hostname]['ansible_default_ipv4']['address']}}"
     volumes:
     - kapacitor_data:/etc/kapacitor
     - kapacitor_storage:/var/lib/kapacitor

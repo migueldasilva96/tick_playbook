@@ -8,13 +8,13 @@ var groupBy = ['host']
 
 var whereFilter = lambda: TRUE
 
-var period = 10m
+var period = 10s
 
 0s
 
 var every = 30s
 
-var name = 'CPU TEST > 99'
+var name = 'CPU TEST > 85'
 
 var idVar = name + '-{{.Group}}'
 
@@ -36,7 +36,7 @@ var outputMeasurement = 'alerts'
 
 var triggerType = 'threshold'
 
-var crit = 99
+var crit = 85
 
 var data = stream
     |from()
