@@ -1,0 +1,34 @@
+- name: "############### CREATING TELEGRAF VOLUMES ###############"
+  shell: docker volume create --name telegraf_storage | docker volume create --name telegraf_data
+
+
+- name: "############### SETTING UP TELEGRAF CONTAINER ###############"
+  docker_container:
+    name: tick_telegraf
+    image: telegraf:latest
+    state: started
+    restart_policy: always
+    ports:
+    - "8092:8092"
+    - "8094:8094"
+    - "8125:8125"
+    env:
+      INFLUX_URL="{{ influxdb_host }}"
+      INFLUX_DATABASE="{{ influxdb_database }}"
+      INFLUX_USER="{{ influxdb_user }}"
+      INFLUX_PASSWORD="{{ influxdb_password }}"
+    volumes:
+      - telegraf_storage:/var/lib/telegraf
+      - telegraf_data:/etc/telegraf
+
+- name: "############### SETTNG TELEGRAF CONFIGURATION ###############"
+  copy:
+    src: roles/telegraf/files/telegraf.conf
+    dest: /var/lib/docker/volumes/telegraf_data/_data
+    owner: root
+    group: root
+    mode: 0644
+    backup: yes
+
+- name: "############### APPLYING TELEGRAF CONFIGURATION ###############"
+  shell: docker restart tick_telegraf

@@ -1,10 +1,21 @@
 ---
-- hosts: all
+- hosts: localhost
+  gather_facts: no
+  vars_prompt:
+  - name: target_host
+    prompt: "INSIRA O ENDEREÇO IP DO HOST DE DESTINO"
+    private: no
+  tasks:
+    - add_host:
+        name: "{{ target_host }}"
+        groups: dynamically_created_hosts
+
+- hosts: dynamically_created_hosts
   become: true
   roles:
     - docker
 
-- hosts: all
+- hosts: dynamically_created_hosts
   become: true
   vars_prompt:
     - name: database
@@ -25,17 +36,17 @@
   roles:
     - influxdb
 
-- hosts: all
+- hosts: dynamically_created_hosts
   become: true
   roles:
     - grafana
 
-- hosts: all
+- hosts: dynamically_created_hosts
   become: true
   roles:
     - kapacitor
 
-- hosts: all
+- hosts: dynamically_created_hosts
   become: true
   roles:
     - chronograf
