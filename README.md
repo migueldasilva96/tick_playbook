@@ -18,7 +18,7 @@ The aim is to document the key aspects of the TICK Stack service technical desig
 
 ## **Influxdata Overview**
 
-![](https://raw.githubusercontent.com/hfrpinto/tick_playbook/master/intro-gs-diagram.png)
+![Screenshot](intro-gs-diagram.png)
 
 Influxdata is a time series data platform built to integrate real-time analytics, event handling and time-based data with Open Source plugins.
 A time series database deals with specific workloads and requirements. They need to ingest millions of data points per second, performing real-time queries across these large data sets in a non-blocking manner, downsampling and evicting high-precision low-value data. It optimizes data storage, reducing its costs and performing complex time-bound queries to extract meaningful insight from the data.
@@ -28,7 +28,8 @@ Influxdata is a complete platform for handling all time series data, from humans
 
 Telegraf is part of the TICK Stack and is a plugin-driven server agent for collecting and reporting metrics. Telegraf has integrations to source a variety of metrics, events and logs, directly from the containers and systems it's running on, pull metrics from third-party APIs, or even listen for metrics via a snmp service. It also has output plugins to send metrics to a variety of other datastores, services and message queues, including InfluxDB.
 
-<center><img src="https://github.com/hfrpinto/tick_playbook/blob/master/telegraf.png" /></center>
+
+![Screenshot](telegraf.png)
 
 
 
