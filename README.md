@@ -28,7 +28,6 @@ Influxdata is a complete platform for handling all time series data, from humans
 
 Telegraf is part of the TICK Stack and is a plugin-driven server agent for collecting and reporting metrics. Telegraf has integrations to source a variety of metrics, events and logs, directly from the containers and systems it's running on, pull metrics from third-party APIs, or even listen for metrics via a snmp service. It also has output plugins to send metrics to a variety of other datastores, services and message queues, including InfluxDB.
 
-
 ![Screenshot](telegraf.png)
 
 
