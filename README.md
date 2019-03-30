@@ -18,7 +18,7 @@ The aim is to document the key aspects of the TICK Stack service technical desig
 
 ## **Influxdata Overview**
 
-![](/home/it/Desktop/TICK%20DOCUMENTATION/intro-gs-diagram.png)
+![](https://github.com/hfrpinto/tick_playbook/blob/master/intro-gs-diagram.png)
 
 Influxdata is a time series data platform built to integrate real-time analytics, event handling and time-based data with Open Source plugins.
 A time series database deals with specific workloads and requirements. They need to ingest millions of data points per second, performing real-time queries across these large data sets in a non-blocking manner, downsampling and evicting high-precision low-value data. It optimizes data storage, reducing its costs and performing complex time-bound queries to extract meaningful insight from the data.
