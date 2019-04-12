@@ -2,23 +2,20 @@ var db = 'db0'
 
 var rp = 'autogen'
 
-var measurement = 'cpu'
+var measurement = 'net'
 
-var groupBy = ['host']
+var groupBy = ['host', 'interface']
 
 var whereFilter = lambda: TRUE
 
-var period = 10s
+// var period = 10s
 
-0s
-
-var every = 30s
-
-var name = 'CPU TEST > 85'
+// var every = 10s
+var name = 'net bytes revived'
 
 var idVar = name + '-{{.Group}}'
 
-var message = ' {{.ID}}  {{.Group}} {{ index .Tags "value" }} {{.Time}}'
+var message = ' LEVEL = {{.Level}}  - ID = {{.ID}} - Group: {{.Group}} - Value: {{ index .Fields "value" }} - Time: {{.Time}} '
 
 var idTag = 'alertID'
 
@@ -36,7 +33,11 @@ var outputMeasurement = 'alerts'
 
 var triggerType = 'threshold'
 
-var crit = 85
+var info = 1024
+
+var warn = 10240
+
+var crit = 1048576
 
 var data = stream
     |from()
@@ -45,23 +46,27 @@ var data = stream
         .measurement(measurement)
         .groupBy(groupBy)
         .where(whereFilter)
-    |window()
-        .period(period)
-        .every(every)
-        .align()
-    |mean('usage_idle')
+    //    |window()
+    //        .period(period)
+    //        .every(every)
+    //        .align()
+    |derivative('bytes_recv')
         .as('value')
+        .nonNegative()
+        .unit(1s)
 
 var trigger = data
     |alert()
+        .info(lambda: "value" > info)
+        .warn(lambda: "value" > warn)
         .crit(lambda: "value" > crit)
+        .stateChangesOnly()
         .message(message)
         .id(idVar)
         .idTag(idTag)
         .levelTag(levelTag)
         .messageField(messageField)
         .durationField(durationField)
-        .stateChangesOnly()
 
 trigger
     |eval(lambda: float("value"))
@@ -77,4 +82,3 @@ trigger
 
 trigger
     |httpOut('output')
-
