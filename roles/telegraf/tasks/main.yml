@@ -13,7 +13,7 @@
     - "8094:8094"
     - "8125:8125"
     env:
-      INFLUX_URL="{{ influxdb_host }}"
+      INFLUX_URL="http://{{ influxdb_host }}:8086"
       INFLUX_DATABASE="{{ influxdb_database }}"
       INFLUX_USER="{{ influxdb_user }}"
       INFLUX_PASSWORD="{{ influxdb_password }}"
