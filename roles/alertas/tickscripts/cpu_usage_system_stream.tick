@@ -1,0 +1,83 @@
+var db = 'db0'
+
+var rp = 'autogen'
+
+var measurement = 'cpu'
+
+var groupBy = ['host']
+
+var whereFilter = lambda: TRUE
+
+var period = 10s
+
+var every = 30s
+
+var name = 'cpu_usage_system'
+
+var idVar = name + '-{{.Group}}'
+
+var message = 'LEVEL:{{.Level}} ID:{{.ID}} Group: {{.Group}} - Value: {{ index .Fields "value" }} Time: {{.Time}}'
+
+var idTag = 'alertID'
+
+var levelTag = 'level'
+
+var messageField = 'message'
+
+var durationField = 'duration'
+
+var outputDB = 'chronograf'
+
+var outputRP = 'autogen'
+
+var outputMeasurement = 'alerts'
+
+var triggerType = 'threshold'
+
+var warn = 70
+var crit = 90
+
+var data = stream
+    |from()
+        .database(db)
+        .retentionPolicy(rp)
+        .measurement(measurement)
+        .groupBy(groupBy)
+        .where(whereFilter)
+    |window()
+        .period(period)
+        .every(every)
+        .align()
+    |mean('usage_system')
+        .as('value')
+
+var trigger = data
+    |alert()
+    	.warn(lambda: "value" > warn)
+        .crit(lambda: "value" > crit)
+        .message(message)
+        .id(idVar)
+        .idTag(idTag)
+        .levelTag(levelTag)
+        .messageField(messageField)
+        .durationField(durationField)
+        .stateChangesOnly()
+        .slack()
+        .workspace('https://alertskapacitorgroup.slack.com')
+        .channel('#alerts')
+
+trigger
+    |eval(lambda: float("value"))
+        .as('value')
+        .keep()
+    |influxDBOut()
+        .create()
+        .database(outputDB)
+        .retentionPolicy(outputRP)
+        .measurement(outputMeasurement)
+        .tag('alertName', name)
+        .tag('triggerType', triggerType)
+
+trigger
+    |httpOut('output')
+

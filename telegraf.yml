@@ -25,5 +25,8 @@
     - name: influxdb_password
       private: yes
       prompt: "INSIRA A PASSWORD DO UTILIZADOR:"
+    - name: telegraf_host_name
+      private: no
+      prompt: "INSIRA O NOME DO TELEGRAF"
   roles:
     - telegraf

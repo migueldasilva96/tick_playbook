@@ -2,7 +2,7 @@ var db = 'db0'
 
 var rp = 'autogen'
 
-var measurement = 'disk'
+var measurement = 'system'
 
 var groupBy = ['host']
 
@@ -10,13 +10,11 @@ var whereFilter = lambda: TRUE
 
 var period = 10m
 
-var every = 30s
-
-var name = 'Disco used > 80 %'
+var name = 'system dead'
 
 var idVar = name + '-{{.Group}}'
 
-var message = ' {{.Level}} - {{.ID}} - {{.Group}} - {{ index .Tags "value" }} -  {{ index .Fields "value" }} - {{.Time}} '
+var message = 'Level {{.Level}} - Deadman {{.ID}} - {{.Group}} - {{.Time}} '
 
 var idTag = 'alertID'
 
@@ -32,9 +30,9 @@ var outputRP = 'autogen'
 
 var outputMeasurement = 'alerts'
 
-var triggerType = 'threshold'
+var triggerType = 'deadman'
 
-var crit = 80
+var threshold = 0.0
 
 var data = stream
     |from()
@@ -43,25 +41,23 @@ var data = stream
         .measurement(measurement)
         .groupBy(groupBy)
         .where(whereFilter)
-    |window()
-        .period(period)
-        .every(every)
-        .align()
-    |mean('used_percent')
-        .as('value')
 
 var trigger = data
-    |alert()
-        .crit(lambda: "value" > crit)
+    |deadman(threshold, period)
         .message(message)
         .id(idVar)
         .idTag(idTag)
         .levelTag(levelTag)
         .messageField(messageField)
         .durationField(durationField)
-        .stateChangesOnly()
+        .slack()
+        .workspace('https://alertskapacitorgroup.slack.com')
+        .channel('#alerts')
 
 trigger
+    |eval(lambda: "emitted")
+        .as('value')
+        .keep('value', messageField, durationField)
     |eval(lambda: float("value"))
         .as('value')
         .keep()
@@ -75,4 +71,3 @@ trigger
 
 trigger
     |httpOut('output')
-
