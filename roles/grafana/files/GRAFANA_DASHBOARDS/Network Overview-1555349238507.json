@@ -16,8 +16,7 @@
   "editable": true,
   "gnetId": 928,
   "graphTooltip": 1,
-  "id": 3,
-  "iteration": 1555349235865,
+  "iteration": 1555427580286,
   "links": [],
   "panels": [
     {
@@ -1635,5 +1634,5 @@
   "timezone": "browser",
   "title": "Network Overview",
   "uid": "Vy4qpaRZz",
-  "version": 5
+  "version": 1
 }
