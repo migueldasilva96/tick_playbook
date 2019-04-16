@@ -16,8 +16,7 @@
   "editable": true,
   "gnetId": 928,
   "graphTooltip": 1,
-  "id": 4,
-  "iteration": 1555349250582,
+  "iteration": 1555427536627,
   "links": [],
   "panels": [
     {
@@ -454,5 +453,5 @@
   "timezone": "browser",
   "title": "RAM Statistics",
   "uid": "QrNGFaRZz",
-  "version": 3
+  "version": 1
 }
