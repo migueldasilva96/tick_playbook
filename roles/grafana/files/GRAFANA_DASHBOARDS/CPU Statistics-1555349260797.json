@@ -16,8 +16,7 @@
   "editable": true,
   "gnetId": 928,
   "graphTooltip": 1,
-  "id": 1,
-  "iteration": 1555349256286,
+  "iteration": 1555427509586,
   "links": [],
   "panels": [
     {
@@ -919,5 +918,5 @@
   "timezone": "browser",
   "title": "CPU Statistics",
   "uid": "Q5gqOaRWk",
-  "version": 2
+  "version": 1
 }
