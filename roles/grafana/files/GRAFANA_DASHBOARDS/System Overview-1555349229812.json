@@ -16,17 +16,346 @@
   "editable": true,
   "gnetId": 928,
   "graphTooltip": 1,
-  "id": 5,
-  "iteration": 1555349223530,
+  "iteration": 1555426796766,
   "links": [],
   "panels": [
+    {
+      "cards": {
+        "cardHSpacing": 2,
+        "cardMinWidth": 5,
+        "cardRound": null,
+        "cardVSpacing": 2
+      },
+      "color": {
+        "cardColor": "#b4ff00",
+        "colorScale": "sqrt",
+        "colorScheme": "interpolateRdYlGn",
+        "defaultColor": "#757575",
+        "exponent": 0.5,
+        "max": 200000,
+        "mode": "spectrum",
+        "thresholds": []
+      },
+      "data": {
+        "decimals": null,
+        "unitFormat": "short"
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 0
+      },
+      "highlightCards": true,
+      "id": 62046,
+      "legend": {
+        "show": false
+      },
+      "links": [],
+      "maxPerRow": 4,
+      "nullPointMode": "as empty",
+      "repeat": "server",
+      "repeatDirection": "h",
+      "scopedVars": {
+        "server": {
+          "selected": false,
+          "text": "9753f690e862",
+          "value": "9753f690e862"
+        }
+      },
+      "targets": [
+        {
+          "alias": "$netif status $col",
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "net",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "bytes_recv"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              },
+              {
+                "params": [
+                  "10s"
+                ],
+                "type": "non_negative_derivative"
+              },
+              {
+                "params": [
+                  "*8"
+                ],
+                "type": "math"
+              },
+              {
+                "params": [
+                  "in"
+                ],
+                "type": "alias"
+              }
+            ],
+            [
+              {
+                "params": [
+                  "bytes_sent"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              },
+              {
+                "params": [
+                  "10s"
+                ],
+                "type": "non_negative_derivative"
+              },
+              {
+                "params": [
+                  "*8"
+                ],
+                "type": "math"
+              },
+              {
+                "params": [
+                  "out"
+                ],
+                "type": "alias"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "host",
+              "operator": "=~",
+              "value": "/^$server$/"
+            },
+            {
+              "condition": "AND",
+              "key": "interface",
+              "operator": "=~",
+              "value": "/^$netif$/"
+            }
+          ]
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "$server Network Status",
+      "tooltip": {
+        "show": true
+      },
+      "type": "flant-statusmap-panel",
+      "useMax": true,
+      "xAxis": {
+        "labelFormat": "%a %m/%d",
+        "minBucketWidthToShowWeekends": 4,
+        "show": true,
+        "showCrosshair": true,
+        "showWeekends": true
+      },
+      "yAxis": {
+        "show": true,
+        "showCrosshair": false
+      },
+      "yAxisSort": "metrics"
+    },
+    {
+      "cards": {
+        "cardHSpacing": 2,
+        "cardMinWidth": 5,
+        "cardRound": null,
+        "cardVSpacing": 2
+      },
+      "color": {
+        "cardColor": "#b4ff00",
+        "colorScale": "sqrt",
+        "colorScheme": "interpolateRdYlGn",
+        "defaultColor": "#757575",
+        "exponent": 0.5,
+        "max": 200000,
+        "mode": "spectrum",
+        "thresholds": []
+      },
+      "data": {
+        "decimals": null,
+        "unitFormat": "short"
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 0
+      },
+      "highlightCards": true,
+      "id": 62047,
+      "legend": {
+        "show": false
+      },
+      "links": [],
+      "maxPerRow": 4,
+      "nullPointMode": "as empty",
+      "repeat": null,
+      "repeatDirection": "h",
+      "repeatIteration": 1555426796766,
+      "repeatPanelId": 62046,
+      "scopedVars": {
+        "server": {
+          "selected": false,
+          "text": "influxdb_test",
+          "value": "influxdb_test"
+        }
+      },
+      "targets": [
+        {
+          "alias": "$netif status $col",
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "net",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "bytes_recv"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              },
+              {
+                "params": [
+                  "10s"
+                ],
+                "type": "non_negative_derivative"
+              },
+              {
+                "params": [
+                  "*8"
+                ],
+                "type": "math"
+              },
+              {
+                "params": [
+                  "in"
+                ],
+                "type": "alias"
+              }
+            ],
+            [
+              {
+                "params": [
+                  "bytes_sent"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              },
+              {
+                "params": [
+                  "10s"
+                ],
+                "type": "non_negative_derivative"
+              },
+              {
+                "params": [
+                  "*8"
+                ],
+                "type": "math"
+              },
+              {
+                "params": [
+                  "out"
+                ],
+                "type": "alias"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "host",
+              "operator": "=~",
+              "value": "/^$server$/"
+            },
+            {
+              "condition": "AND",
+              "key": "interface",
+              "operator": "=~",
+              "value": "/^$netif$/"
+            }
+          ]
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "$server Network Status",
+      "tooltip": {
+        "show": true
+      },
+      "type": "flant-statusmap-panel",
+      "useMax": true,
+      "xAxis": {
+        "labelFormat": "%a %m/%d",
+        "minBucketWidthToShowWeekends": 4,
+        "show": true,
+        "showCrosshair": true,
+        "showWeekends": true
+      },
+      "yAxis": {
+        "show": true,
+        "showCrosshair": false
+      },
+      "yAxisSort": "metrics"
+    },
     {
       "collapsed": false,
       "gridPos": {
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 0
+        "y": 8
       },
       "id": 62044,
       "panels": [],
@@ -57,9 +386,9 @@
       },
       "gridPos": {
         "h": 4,
-        "w": 4,
+        "w": 12,
         "x": 0,
-        "y": 1
+        "y": 9
       },
       "height": "150",
       "id": 61858,
@@ -77,6 +406,7 @@
         }
       ],
       "maxDataPoints": 100,
+      "maxPerRow": 4,
       "nullPointMode": "connected",
       "nullText": null,
       "postfix": "",
@@ -90,6 +420,15 @@
           "to": "null"
         }
       ],
+      "repeat": "server",
+      "repeatDirection": "h",
+      "scopedVars": {
+        "server": {
+          "selected": false,
+          "text": "9753f690e862",
+          "value": "9753f690e862"
+        }
+      },
       "sparkline": {
         "fillColor": "rgba(31, 118, 189, 0.18)",
         "full": false,
@@ -142,7 +481,139 @@
         }
       ],
       "thresholds": "",
-      "title": "Uptime",
+      "title": "$server Uptime",
+      "type": "singlestat",
+      "valueFontSize": "100%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "N/A",
+          "value": "null"
+        }
+      ],
+      "valueName": "current"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": false,
+      "colorValue": false,
+      "colors": [
+        "rgba(245, 54, 54, 0.9)",
+        "rgba(237, 129, 40, 0.89)",
+        "rgba(50, 172, 45, 0.97)"
+      ],
+      "datasource": "InfluxDB",
+      "decimals": 1,
+      "editable": true,
+      "error": false,
+      "format": "s",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 12,
+        "x": 12,
+        "y": 9
+      },
+      "height": "150",
+      "id": 62048,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "maxPerRow": 4,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "repeat": null,
+      "repeatDirection": "h",
+      "repeatIteration": 1555426796766,
+      "repeatPanelId": 61858,
+      "scopedVars": {
+        "server": {
+          "selected": false,
+          "text": "influxdb_test",
+          "value": "influxdb_test"
+        }
+      },
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": false
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "dsType": "influxdb",
+          "groupBy": [
+            {
+              "params": [
+                "$interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "system",
+          "policy": "default",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "uptime"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "last"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "host",
+              "operator": "=~",
+              "value": "/^$server$/"
+            }
+          ]
+        }
+      ],
+      "thresholds": "",
+      "title": "$server Uptime",
       "type": "singlestat",
       "valueFontSize": "100%",
       "valueMaps": [
@@ -176,9 +647,9 @@
       },
       "gridPos": {
         "h": 4,
-        "w": 6,
-        "x": 4,
-        "y": 1
+        "w": 12,
+        "x": 0,
+        "y": 13
       },
       "height": "150",
       "id": 61861,
@@ -203,6 +674,7 @@
         }
       ],
       "maxDataPoints": 100,
+      "maxPerRow": 4,
       "nullPointMode": "connected",
       "nullText": null,
       "postfix": "",
@@ -216,6 +688,15 @@
           "to": "null"
         }
       ],
+      "repeat": "server",
+      "repeatDirection": "h",
+      "scopedVars": {
+        "server": {
+          "selected": false,
+          "text": "9753f690e862",
+          "value": "9753f690e862"
+        }
+      },
       "sparkline": {
         "fillColor": "rgba(31, 118, 189, 0.18)",
         "full": false,
@@ -281,7 +762,7 @@
         }
       ],
       "thresholds": "70,80,90",
-      "title": "CPU usage",
+      "title": "$server CPU usage",
       "type": "singlestat",
       "valueFontSize": "80%",
       "valueMaps": [
@@ -315,9 +796,160 @@
       },
       "gridPos": {
         "h": 4,
-        "w": 7,
-        "x": 10,
-        "y": 1
+        "w": 12,
+        "x": 12,
+        "y": 13
+      },
+      "height": "150",
+      "id": 62049,
+      "interval": null,
+      "links": [
+        {
+          "dashboard": "CPU Statistics",
+          "title": "CPU Statistics",
+          "type": "dashboard",
+          "url": "/d/Q5gqOaRWk/cpu-statistics"
+        }
+      ],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "maxPerRow": 4,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "repeat": null,
+      "repeatDirection": "h",
+      "repeatIteration": 1555426796766,
+      "repeatPanelId": 61861,
+      "scopedVars": {
+        "server": {
+          "selected": false,
+          "text": "influxdb_test",
+          "value": "influxdb_test"
+        }
+      },
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": false
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "dsType": "influxdb",
+          "groupBy": [
+            {
+              "params": [
+                "$interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "cpu",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "usage_idle"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "last"
+              },
+              {
+                "params": [
+                  "* -1 + 100"
+                ],
+                "type": "math"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "host",
+              "operator": "=~",
+              "value": "/^$server$/"
+            },
+            {
+              "condition": "AND",
+              "key": "cpu",
+              "operator": "=",
+              "value": "cpu-total"
+            }
+          ]
+        }
+      ],
+      "thresholds": "70,80,90",
+      "title": "$server CPU usage",
+      "type": "singlestat",
+      "valueFontSize": "80%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "N/A",
+          "value": "null"
+        }
+      ],
+      "valueName": "current"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": false,
+      "colorValue": true,
+      "colors": [
+        "rgba(50, 172, 45, 0.97)",
+        "rgba(237, 129, 40, 0.89)",
+        "rgba(245, 54, 54, 0.9)"
+      ],
+      "datasource": "InfluxDB",
+      "editable": true,
+      "error": false,
+      "format": "percent",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": true,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 12,
+        "x": 0,
+        "y": 17
       },
       "height": "150",
       "id": 61860,
@@ -342,6 +974,7 @@
         }
       ],
       "maxDataPoints": 100,
+      "maxPerRow": 4,
       "nullPointMode": "connected",
       "nullText": null,
       "postfix": "",
@@ -355,6 +988,15 @@
           "to": "null"
         }
       ],
+      "repeat": "server",
+      "repeatDirection": "h",
+      "scopedVars": {
+        "server": {
+          "selected": false,
+          "text": "9753f690e862",
+          "value": "9753f690e862"
+        }
+      },
       "sparkline": {
         "fillColor": "rgba(31, 118, 189, 0.18)",
         "full": false,
@@ -408,7 +1050,146 @@
         }
       ],
       "thresholds": "70,80,90",
-      "title": "RAM usage",
+      "title": "$server RAM usage",
+      "type": "singlestat",
+      "valueFontSize": "80%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "N/A",
+          "value": "null"
+        }
+      ],
+      "valueName": "current"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": false,
+      "colorValue": true,
+      "colors": [
+        "rgba(50, 172, 45, 0.97)",
+        "rgba(237, 129, 40, 0.89)",
+        "rgba(245, 54, 54, 0.9)"
+      ],
+      "datasource": "InfluxDB",
+      "editable": true,
+      "error": false,
+      "format": "percent",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": true,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 12,
+        "x": 12,
+        "y": 17
+      },
+      "height": "150",
+      "id": 62050,
+      "interval": null,
+      "links": [
+        {
+          "dashboard": "RAM Statistics",
+          "title": "RAM Statistics",
+          "type": "dashboard",
+          "url": "/d/QrNGFaRZz/ram-statistics"
+        }
+      ],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "maxPerRow": 4,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "repeat": null,
+      "repeatDirection": "h",
+      "repeatIteration": 1555426796766,
+      "repeatPanelId": 61860,
+      "scopedVars": {
+        "server": {
+          "selected": false,
+          "text": "influxdb_test",
+          "value": "influxdb_test"
+        }
+      },
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": false
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "dsType": "influxdb",
+          "groupBy": [
+            {
+              "params": [
+                "$interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "mem",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "used_percent"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "last"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "host",
+              "operator": "=~",
+              "value": "/^$server$/"
+            }
+          ]
+        }
+      ],
+      "thresholds": "70,80,90",
+      "title": "$server RAM usage",
       "type": "singlestat",
       "valueFontSize": "80%",
       "valueMaps": [
@@ -443,9 +1224,9 @@
       },
       "gridPos": {
         "h": 4,
-        "w": 7,
-        "x": 17,
-        "y": 1
+        "w": 12,
+        "x": 0,
+        "y": 21
       },
       "height": "150",
       "id": 61863,
@@ -470,6 +1251,7 @@
         }
       ],
       "maxDataPoints": 100,
+      "maxPerRow": 4,
       "nullPointMode": "connected",
       "nullText": null,
       "postfix": "",
@@ -483,6 +1265,15 @@
           "to": "null"
         }
       ],
+      "repeat": "server",
+      "repeatDirection": "h",
+      "scopedVars": {
+        "server": {
+          "selected": false,
+          "text": "9753f690e862",
+          "value": "9753f690e862"
+        }
+      },
       "sparkline": {
         "fillColor": "rgba(31, 118, 189, 0.18)",
         "full": false,
@@ -536,7 +1327,147 @@
         }
       ],
       "thresholds": "50,70,90",
-      "title": "Disk Usage",
+      "title": "$server Disk Usage",
+      "type": "singlestat",
+      "valueFontSize": "80%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "N/A",
+          "value": "null"
+        }
+      ],
+      "valueName": "current"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": false,
+      "colorValue": true,
+      "colors": [
+        "rgba(50, 172, 45, 0.97)",
+        "rgba(237, 129, 40, 0.89)",
+        "rgba(245, 54, 54, 0.9)"
+      ],
+      "datasource": "InfluxDB",
+      "decimals": 0,
+      "editable": true,
+      "error": false,
+      "format": "percent",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": true,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 12,
+        "x": 12,
+        "y": 21
+      },
+      "height": "150",
+      "id": 62051,
+      "interval": null,
+      "links": [
+        {
+          "dashboard": "Disk Usage and I/O",
+          "title": "Disk Usage and I/O",
+          "type": "dashboard",
+          "url": "/d/gjFKK-RZk/disk-usage-and-i-o"
+        }
+      ],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "maxPerRow": 4,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "repeat": null,
+      "repeatDirection": "h",
+      "repeatIteration": 1555426796766,
+      "repeatPanelId": 61863,
+      "scopedVars": {
+        "server": {
+          "selected": false,
+          "text": "influxdb_test",
+          "value": "influxdb_test"
+        }
+      },
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": false
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "dsType": "influxdb",
+          "groupBy": [
+            {
+              "params": [
+                "$interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "disk",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "used_percent"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "last"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "host",
+              "operator": "=~",
+              "value": "/^$server$/"
+            }
+          ]
+        }
+      ],
+      "thresholds": "50,70,90",
+      "title": "$server Disk Usage",
       "type": "singlestat",
       "valueFontSize": "80%",
       "valueMaps": [
@@ -571,9 +1502,9 @@
       },
       "gridPos": {
         "h": 7,
-        "w": 24,
+        "w": 12,
         "x": 0,
-        "y": 5
+        "y": 25
       },
       "height": "150",
       "id": 61867,
@@ -598,6 +1529,7 @@
         }
       ],
       "maxDataPoints": 100,
+      "maxPerRow": 4,
       "nullPointMode": "connected",
       "nullText": null,
       "postfix": "",
@@ -611,6 +1543,15 @@
           "to": "null"
         }
       ],
+      "repeat": "server",
+      "repeatDirection": "h",
+      "scopedVars": {
+        "server": {
+          "selected": false,
+          "text": "9753f690e862",
+          "value": "9753f690e862"
+        }
+      },
       "sparkline": {
         "fillColor": "rgba(31, 118, 189, 0.18)",
         "full": false,
@@ -681,7 +1622,164 @@
         }
       ],
       "thresholds": "30,40,50",
-      "title": "Network Usage",
+      "title": "$server Network Usage",
+      "type": "singlestat",
+      "valueFontSize": "100%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "N/A",
+          "value": "null"
+        }
+      ],
+      "valueName": "current"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": false,
+      "colorValue": false,
+      "colors": [
+        "rgba(245, 54, 54, 0.9)",
+        "rgba(237, 129, 40, 0.89)",
+        "rgba(50, 172, 45, 0.97)"
+      ],
+      "datasource": "InfluxDB",
+      "decimals": 2,
+      "editable": true,
+      "error": false,
+      "format": "Bps",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 12,
+        "x": 12,
+        "y": 25
+      },
+      "height": "150",
+      "id": 62052,
+      "interval": null,
+      "links": [
+        {
+          "dashboard": "Network Overview",
+          "title": "Network Overview",
+          "type": "dashboard",
+          "url": "/d/Vy4qpaRZz/network-overview"
+        }
+      ],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "maxPerRow": 4,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "repeat": null,
+      "repeatDirection": "h",
+      "repeatIteration": 1555426796766,
+      "repeatPanelId": 61867,
+      "scopedVars": {
+        "server": {
+          "selected": false,
+          "text": "influxdb_test",
+          "value": "influxdb_test"
+        }
+      },
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": true
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "net",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "bytes_recv"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              },
+              {
+                "params": [
+                  "10s"
+                ],
+                "type": "non_negative_derivative"
+              },
+              {
+                "params": [
+                  "*8"
+                ],
+                "type": "math"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "host",
+              "operator": "=~",
+              "value": "/^$server$/"
+            },
+            {
+              "condition": "AND",
+              "key": "interface",
+              "operator": "=~",
+              "value": "/^$netif$/"
+            }
+          ]
+        }
+      ],
+      "thresholds": "30,40,50",
+      "title": "$server Network Usage",
       "type": "singlestat",
       "valueFontSize": "100%",
       "valueMaps": [
@@ -791,15 +1889,18 @@
       {
         "allValue": null,
         "current": {
-          "text": "9753f690e862",
-          "value": "9753f690e862"
+          "tags": [],
+          "text": "All",
+          "value": [
+            "$__all"
+          ]
         },
         "datasource": "InfluxDB",
         "definition": "",
         "hide": 0,
-        "includeAll": false,
+        "includeAll": true,
         "label": "Host",
-        "multi": false,
+        "multi": true,
         "name": "server",
         "options": [],
         "query": "SHOW TAG VALUES FROM system WITH KEY=host",
@@ -894,7 +1995,9 @@
         "allValue": null,
         "current": {
           "text": "All",
-          "value": "$__all"
+          "value": [
+            "$__all"
+          ]
         },
         "datasource": "$datasource",
         "definition": "",
@@ -918,7 +2021,7 @@
     ]
   },
   "time": {
-    "from": "now-1h",
+    "from": "now-5m",
     "to": "now"
   },
   "timepicker": {
@@ -949,5 +2052,5 @@
   "timezone": "browser",
   "title": "System Overview",
   "uid": "6mpoU4RWk",
-  "version": 5
+  "version": 1
 }
