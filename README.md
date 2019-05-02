@@ -74,9 +74,12 @@ O conjunto de instruções que se seguem prevêm a instalação e configuração
 
 ### Instalação
 
-1- Introduzir o IP do host de destino:
+1- Executar o playbook e introduzir o endereço ip do host de destino:
+```
+$ sudo ansible-playbook -K -u [username do host de destino] playbook.yml --ask-pass
+```
 
-![](host_ip.gif)
+![](host.gif)
 
 
 ```
