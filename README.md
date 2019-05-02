@@ -74,7 +74,7 @@ O conjunto de instruções que se seguem prevêm a instalação e configuração
 
 ### Instalação
 
-#### 1- Efetuar o clone do repositório do github que contêm os ficheiros:
+1- Efetuar o clone do repositório do github que contêm os ficheiros:
 ```
 $git clone https://github.com/hfrpinto/tick_playbook.git
 $cd tick_playbook
@@ -82,18 +82,18 @@ $cd tick_playbook
 
 ![](git_clone.gif)
 
-#### 2- Executar o playbook e introduzir o endereço ip do host de destino:
+2- Executar o playbook e introduzir o endereço ip do host de destino:
 ```
 $ sudo ansible-playbook -K -u [username do host de destino] playbook.yml --ask-pass
 ```
 
 ![](host.gif)
 
-#### 3- Escolher uma das opções no menu apresentado:
+3- Escolher uma das opções no menu apresentado:
 
 ![](menu.gif)
 
-#### 4- Mediante a escolha selecionada, serão instaladas as ferramentas pretendidas:
+4- Mediante a escolha selecionada, serão instaladas as ferramentas pretendidas:
 
 ![](setup.gif)
 ```
