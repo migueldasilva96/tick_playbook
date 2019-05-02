@@ -9,6 +9,8 @@
     restart_policy: always
     ports:
     - "3000:3000"
+    env:
+        GF_INSTALL_PLUGINS=flant-statusmap-panel
     volumes:
     - grafana_storage:/var/lib/grafana
     - grafana_data:/etc/grafana

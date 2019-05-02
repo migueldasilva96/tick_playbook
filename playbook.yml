@@ -12,41 +12,21 @@
 
 - hosts: dynamically_created_hosts
   become: true
-  roles:
-    - docker
-
-- hosts: dynamically_created_hosts
-  become: true
   vars_prompt:
-    - name: database
+    - name: menu_choice
+      prompt: "Para o correto funcionameto e instalação dos diferentes componentes, existe um conjunto de pacotes que devem estar presentes no terminal em cujas diferentes ferramentas serão executadas.
+        \n(Todas as dependências são instaladas por omissão quando executado o playbook)
+        \n
+        \nEscolha uma das seguintes opções(introduza o valor correspondente à opção):
+            \n1- Install TICK Stack + Grafana
+            \n2- Install Influxdb + Grafana
+            \n3- Install Influxdb + Chronograf + Kapacitor
+            \n
+            \nIntroduza a sua escolha"
       private: no
-      prompt: "INSIRA NOME DA BASE DE DADOS A CRIAR:"
-    - name: admin
-      private: no
-      prompt: "INSIRA USERNAME DE ADMINISTRADOR:"
-    - name: admin_password
-      private: yes
-      prompt: "DEFINA A PASSWORD DE ADMINISTRADOR:"
-    - name: user
-      private: no
-      prompt: "INSIRA O NOME DE UTILIZADOR PARA A BASE DE DADOS:"
-    - name: user_password
-      private: yes
-      prompt: "DEFINA A PASSWORD DO UTILIZADOR:"
   roles:
+    - dependencies
     - influxdb
-
-- hosts: dynamically_created_hosts
-  become: true
-  roles:
-    - grafana
-
-- hosts: dynamically_created_hosts
-  become: true
-  roles:
-    - kapacitor
-
-- hosts: dynamically_created_hosts
-  become: true
-  roles:
-    - chronograf
+    - { role: chronograf, when: menu_choice == "1" or menu_choice == "3" }
+    - { role: kapacitor, when: menu_choice == "1" or menu_choice == "3" }
+    - { role: grafana, when: menu_choice == "1" or menu_choice == "2" }

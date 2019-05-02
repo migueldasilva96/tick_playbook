@@ -1,0 +1,4 @@
+---
+influxdb_database: 'db0'
+influxdb_user: 'telegraf'
+influxdb_password: 'telegraf'

@@ -1,3 +1,5 @@
+- include_vars: main.yml
+
 - name: "############### CREATING INFLUXDB VOLUMES ###############"
   shell: docker volume create --name influxdb_storage | docker volume create --name influxdb_data
 

@@ -1,0 +1,6 @@
+---
+database: 'db0'
+admin: 'admin'
+admin_password: 'admin'
+user: 'telegraf'
+user_password: 'telegraf'
