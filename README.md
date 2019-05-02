@@ -85,6 +85,9 @@ $ sudo ansible-playbook -K -u [username do host de destino] playbook.yml --ask-p
 
 ![](menu.gif)
 
+#### 3- Mediante a escolha selecionada, serão instaladas as ferramentas pretendidas:
+
+![](setup.gif)
 ```
 Give the example
 ```
