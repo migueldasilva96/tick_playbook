@@ -81,6 +81,9 @@ $ sudo ansible-playbook -K -u [username do host de destino] playbook.yml --ask-p
 
 ![](host.gif)
 
+#### 2- Escolher uma das opções no menu apresentado:
+
+![](menu.gif)
 
 ```
 Give the example
