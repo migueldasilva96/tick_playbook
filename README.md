@@ -76,8 +76,9 @@ O conjunto de instruções que se seguem prevêm a instalação e configuração
 
 1- Introduzir o IP do host de destino:
 
+```
 ![](host_ip.gif)
-
+```
 
 ```
 Give the example
