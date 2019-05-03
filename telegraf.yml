@@ -13,17 +13,9 @@
 
 - hosts: dynamically_created_hosts
   become: true
-  roles:
-    - docker
-
-- hosts: dynamically_created_hosts
-  become: true
   vars_prompt:
     - name: influxdb_host
       private: no
       prompt: "INSIRA O ENDEREÇO DO HOST DO INLUXDB (Ex.: 192.168.0.1)"
-    - name: telegraf_host_name
-      private: no
-      prompt: "INSIRA O NOME DO TELEGRAF"
   roles:
     - telegraf

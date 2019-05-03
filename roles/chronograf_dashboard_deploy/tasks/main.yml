@@ -1,3 +1,5 @@
+- include_vars: ../../influxdb/vars/main.yml
+
 - name: "############### Copy dashboards complete ###############"
   template:
     src: roles/chronograf_dashboard_deploy/dashboards/complete_dashboard.json.j2

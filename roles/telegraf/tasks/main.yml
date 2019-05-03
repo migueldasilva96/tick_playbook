@@ -19,7 +19,7 @@
       INFLUX_DATABASE="{{ influxdb_database }}"
       INFLUX_USER="{{ influxdb_user }}"
       INFLUX_PASSWORD="{{ influxdb_password }}"
-      TELEGRAF_HOST_NAME="{{ telegraf_host_name.split(',') }}"
+      TELEGRAF_HOST_NAME="{{ telegraf_host_name }}"
     volumes:
       - telegraf_storage:/var/lib/telegraf
       - telegraf_data:/etc/telegraf
