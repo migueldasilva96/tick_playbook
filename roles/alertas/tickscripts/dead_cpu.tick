@@ -1,7 +1,3 @@
-var db = 'db0'
-
-var rp = 'autogen'
-
 var measurement = 'cpu'
 
 var groupBy = ['host']
@@ -36,8 +32,6 @@ var threshold = 0.0
 
 var data = stream
     |from()
-        .database(db)
-        .retentionPolicy(rp)
         .measurement(measurement)
         .groupBy(groupBy)
         .where(whereFilter)

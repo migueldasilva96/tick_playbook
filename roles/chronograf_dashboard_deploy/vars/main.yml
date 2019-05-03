@@ -1,0 +1,3 @@
+---
+database: telegraf
+ip_chronograf: 192.168.85.168

@@ -1,0 +1,9 @@
+---
+database: telegraf
+admin: telegrafadmin
+admin_password: telegrafpassword
+user: user
+user_password: user
+workspace_slack: https://alertskapacitorgroup.slack.com
+url_slack: https://hooks.slack.com/services/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
+channel_slack: #kapacitor

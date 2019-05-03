@@ -17,9 +17,9 @@
     - kapacitor_storage:/var/lib/kapacitor
 
 - name: "############### SETTING KAPACITOR CONFIGURATION ###############"
-  copy:
-    src: roles/kapacitor/files/kapacitor.conf
-    dest: /var/lib/docker/volumes/kapacitor_data/_data
+  template:
+    src: roles/kapacitor/templates/kapacitor.conf.j2
+    dest: /var/lib/docker/volumes/kapacitor_data/_data/kapacitor.conf
     owner: root
     group: root
     mode: 0644

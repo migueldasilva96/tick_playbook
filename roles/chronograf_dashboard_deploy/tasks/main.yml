@@ -1,0 +1,23 @@
+- name: "############### Copy dashboards complete ###############"
+  template:
+    src: roles/chronograf_dashboard_deploy/dashboards/complete_dashboard.json.j2
+    dest: /var/lib/docker/volumes/chronograf_storage/_data/complete_dashboard.json
+- name: "############### Copy dashboards complete ###############"
+  template:
+    src: roles/chronograf_dashboard_deploy/dashboards/simple_dashboard.json.j2
+    dest: /var/lib/docker/volumes/chronograf_storage/_data/simple_dashboard.json
+
+- name: "############### Copy dashboards complete ###############"
+  template:
+    src: roles/chronograf_dashboard_deploy/dashboards/teste.json.j2
+    dest: /var/lib/docker/volumes/chronograf_storage/_data/teste.json
+
+
+- name: "############### Copy enable sh dashboards ###############"
+  template:
+    src: roles/chronograf_dashboard_deploy/template/import_dashboard.sh.j2
+    dest: /var/lib/docker/volumes/chronograf_storage/_data/import_dashboard.sh
+
+- name: "###################  Execute dashboards ################"
+  shell: docker exec tick_chronograf bash /var/lib/chronograf/import_dashboard.sh
+

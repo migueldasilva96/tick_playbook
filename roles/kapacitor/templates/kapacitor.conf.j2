@@ -14,12 +14,6 @@ data_dir = "/var/lib/kapacitor"
   https-enabled = false
   https-certificate = "/etc/ssl/kapacitor.pem"
 
-[[udp]]
-  enabled = true
-  bind-address = ":9100"
-  database = "db0"
-  retention-policy = "autogen"
-
 [config-override]
   # Enable/Disable the service for overridding configuration via the HTTP API.
   enabled = true
@@ -43,8 +37,8 @@ data_dir = "/var/lib/kapacitor"
   enabled = true
   default = true
   name = "influxdb"
-  username = "telegraf"
-  password = "telegraf"
+  username = "{{ admin }}"
+  password = "{{ admin_password }}"
   timeout = 0
   insecure-skip-verify = false
   startup-timeout = "5m"
@@ -58,15 +52,15 @@ data_dir = "/var/lib/kapacitor"
   udp-read-buffer = 0
 
   [influxdb.subscriptions]
-    db0 = [ "default", "autogen"]
+    {{ database }} = [ "default", "autogen"]
   [influxdb.excluded-subscriptions]
 
 [[slack]]
   enabled = true
   default = true
-  workspace = "https://alertskapacitorgroup.slack.com"
-  url = "https://hooks.slack.com/services/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"
-  channel = "#alerts"
+  workspace = "{{ workspace_slack }}"
+  url = "{{ url_slack }}"
+  channel = "{{ channel_slack }}"
   username = "kapacitor"
   global = false
   state-changes-only = false

@@ -1,7 +1,3 @@
-var db = 'db0'
-
-var rp = 'autogen'
-
 var measurement = 'cpu'
 
 var groupBy = ['host']
@@ -36,12 +32,10 @@ var triggerType = 'threshold'
 
 var crit = 95
 
-var warn = 80
+var warn = 25
 
 var data = stream
     |from()
-        .database(db)
-        .retentionPolicy(rp)
         .measurement(measurement)
         .groupBy(groupBy)
         .where(whereFilter)
@@ -64,8 +58,6 @@ var trigger = data
         .messageField(messageField)
         .durationField(durationField)
         .slack()
-        .workspace('https://alertskapacitorgroup.slack.com')
-        .channel('#alerts')
 
 trigger
     |eval(lambda: float("value"))

@@ -1,0 +1,13 @@
+- name: "################ Copy tickscripts ###################"
+  template:
+    src: roles/alertas/template/cpu_usage_user_stream.tick
+    dest: /var/lib/docker/volumes/kapacitor_storage/_data/tickscripts/cpu_usage_user_stream.tick
+
+- name: "################ Copy tickscripts ###################"
+  copy:
+    src: roles/alertas/run_alertas.sh
+    dest: /var/lib/docker/volumes/kapacitor_storage/_data/
+
+- name: "################ Execute tickscripts ################"
+  shell: docker exec tick_kapacitor bash /var/lib/kapacitor/alertas/run_alertas.sh
+

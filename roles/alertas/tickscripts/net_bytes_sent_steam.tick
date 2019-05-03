@@ -1,22 +1,17 @@
-var db = 'db0'
+var measurement = 'net'
 
-var rp = 'autogen'
-
-var measurement = 'cpu'
-
-var groupBy = ['host']
+var groupBy = ['host', 'interface']
 
 var whereFilter = lambda: TRUE
 
-var period = 10s
+// var period = 10s
 
-var every = 10s
-
-var name = 'CPU_usage_idle'
+// var every = 10s
+var name = 'net bytes revived warn 20mbs'
 
 var idVar = name + '-{{.Group}}'
 
-var message = 'LEVEL:{{.Level}} ID:{{.ID}} Group: {{.Group}} - Value: {{ index .Fields "value" }} Time: {{.Time}}'
+var message = ' LEVEL = {{.Level}}  - ID = {{.ID}} - Group: {{.Group}} - Value: {{ index .Fields "value" }} - Time: {{.Time}} warn > 20mbs and crit > 100mbs '
 
 var idTag = 'alertID'
 
@@ -34,41 +29,40 @@ var outputMeasurement = 'alerts'
 
 var triggerType = 'threshold'
 
-var crit = 2
+var mb = 1024 * 1024
 
-var warn = 5
+var gb = 1024 * mb
 
-var info = 10
+var warn = 20 * mb
+
+var crit = 100 * mb
 
 var data = stream
     |from()
-        .database(db)
-        .retentionPolicy(rp)
         .measurement(measurement)
         .groupBy(groupBy)
         .where(whereFilter)
-    |window()
-        .period(period)
-        .every(every)
-        .align()
-    |mean('usage_idle')
+    //    |window()
+    //        .period(period)
+    //        .every(every)
+    //        .align()
+    |derivative('bytes_sent')
         .as('value')
+        .nonNegative()
+        .unit(1s)
 
 var trigger = data
     |alert()
-        .crit(lambda: "value" < crit)
-        .warn(lambda: "value" < warn)
-        .info(lambda: "value" < info)
+        .warn(lambda: "value" > warn)
+        .crit(lambda: "value" > crit)
+        .stateChangesOnly()
         .message(message)
         .id(idVar)
         .idTag(idTag)
         .levelTag(levelTag)
         .messageField(messageField)
         .durationField(durationField)
-        .stateChangesOnly()
         .slack()
-        .workspace('https://alertskapacitorgroup.slack.com')
-        .channel('#alerts')
 
 trigger
     |eval(lambda: float("value"))
@@ -84,4 +78,3 @@ trigger
 
 trigger
     |httpOut('output')
-

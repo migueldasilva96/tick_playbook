@@ -1,0 +1,1070 @@
+{		"id": 4,
+		"cells": [
+			{
+				"i": "ac2a9697-8b3f-4ca0-982b-518807442946",
+				"x": 8,
+				"y": 0,
+				"w": 2,
+				"h": 1,
+				"name": "mean_used_%",
+				"queries": [
+					{
+						"query": "SELECT mean(\"used_percent\") AS \"mean_used_percent\" FROM :DB:.\"autogen\".\"mem\" WHERE time > 
+:dashboardTime: AND \"host\"=:host: GROUP BY time(:interval:) FILL(previous)",
+						"queryConfig": {
+							"database": "",
+							"measurement": "",
+							"retentionPolicy": "",
+							"fields": [],
+							"tags": {},
+							"groupBy": {
+								"time": "",
+								"tags": []
+							},
+							"areTagsAccepted": false,
+							"rawText": "SELECT mean(\"used_percent\") AS \"mean_used_percent\" FROM :DB:.\"autogen\".\"mem\" WHERE 
+time > :dashboardTime: AND \"host\"=:host: GROUP BY time(:interval:) FILL(previous)",
+							"range": null,
+							"shifts": null
+						},
+						"source": "",
+						"type": "influxql"
+					}
+				],
+				"axes": {
+					"x": {
+						"bounds": [
+							"",
+							""
+						],
+						"label": "",
+						"prefix": "",
+						"suffix": "",
+						"base": "10",
+						"scale": "linear"
+					},
+					"y": {
+						"bounds": [
+							"",
+							""
+						],
+						"label": "",
+						"prefix": "",
+						"suffix": " %",
+						"base": "10",
+						"scale": "linear"
+					},
+					"y2": {
+						"bounds": [
+							"",
+							""
+						],
+						"label": "",
+						"prefix": "",
+						"suffix": "",
+						"base": "10",
+						"scale": "linear"
+					}
+				},
+				"type": "single-stat",
+				"colors": [
+					{
+						"id": "base",
+						"type": "background",
+						"hex": "#4ED8A0",
+						"name": "rainforest",
+						"value": "-1000000000000000000"
+					},
+					{
+						"id": "da99d9cd-614a-4e93-830e-df6d3a8e229f",
+						"type": "background",
+						"hex": "#FFB94A",
+						"name": "pineapple",
+						"value": "50"
+					},
+					{
+						"id": "650f8a69-355d-413b-ba2e-c2d36823158e",
+						"type": "background",
+						"hex": "#DC4E58",
+						"name": "fire",
+						"value": "80"
+					}
+				],
+				"legend": {},
+				"tableOptions": {
+					"verticalTimeAxis": true,
+					"sortBy": {
+						"internalName": "time",
+						"displayName": "",
+						"visible": true
+					},
+					"wrapping": "truncate",
+					"fixFirstColumn": true
+				},
+				"fieldOptions": [
+					{
+						"internalName": "time",
+						"displayName": "",
+						"visible": true
+					}
+				],
+				"timeFormat": "MM/DD/YYYY HH:mm:ss",
+				"decimalPlaces": {
+					"isEnforced": true,
+					"digits": 2
+				},
+				"note": "",
+				"noteVisibility": "default",
+				"links": {
+					"self": "/chronograf/v1/dashboards/4/cells/ac2a9697-8b3f-4ca0-982b-518807442946"
+				}
+			},
+			{
+				"i": "93b1210c-de82-4b13-b3e2-0dded488e5dd",
+				"x": 4,
+				"y": 1,
+				"w": 2,
+				"h": 1,
+				"name": "disk_use_%",
+				"queries": [
+					{
+						"query": "SELECT mean(\"used_percent\") AS \"mean_used_percent\" FROM :DB:.\"autogen\".\"disk\" WHERE time > 
+:dashboardTime: AND \"host\"=:host: GROUP BY time(:interval:) FILL(previous)",
+						"queryConfig": {
+							"database": "",
+							"measurement": "",
+							"retentionPolicy": "",
+							"fields": [],
+							"tags": {},
+							"groupBy": {
+								"time": "",
+								"tags": []
+							},
+							"areTagsAccepted": false,
+							"rawText": "SELECT mean(\"used_percent\") AS \"mean_used_percent\" FROM :DB:.\"autogen\".\"disk\" WHERE 
+time > :dashboardTime: AND \"host\"=:host: GROUP BY time(:interval:) FILL(previous)",
+							"range": null,
+							"shifts": null
+						},
+						"source": "",
+						"type": "influxql"
+					}
+				],
+				"axes": {
+					"x": {
+						"bounds": [
+							"",
+							""
+						],
+						"label": "",
+						"prefix": "",
+						"suffix": "",
+						"base": "10",
+						"scale": "linear"
+					},
+					"y": {
+						"bounds": [
+							"",
+							""
+						],
+						"label": "",
+						"prefix": "",
+						"suffix": " %",
+						"base": "10",
+						"scale": "linear"
+					},
+					"y2": {
+						"bounds": [
+							"",
+							""
+						],
+						"label": "",
+						"prefix": "",
+						"suffix": "",
+						"base": "10",
+						"scale": "linear"
+					}
+				},
+				"type": "single-stat",
+				"colors": [
+					{
+						"id": "base",
+						"type": "background",
+						"hex": "#4ED8A0",
+						"name": "rainforest",
+						"value": "-1000000000000000000"
+					},
+					{
+						"id": "1fd32712-e346-4917-ba2c-97f142f1d52a",
+						"type": "background",
+						"hex": "#FFB94A",
+						"name": "pineapple",
+						"value": "50"
+					},
+					{
+						"id": "e7ee3d48-b684-48d7-a12f-4a85d32eff35",
+						"type": "background",
+						"hex": "#DC4E58",
+						"name": "fire",
+						"value": "80"
+					}
+				],
+				"legend": {},
+				"tableOptions": {
+					"verticalTimeAxis": true,
+					"sortBy": {
+						"internalName": "time",
+						"displayName": "",
+						"visible": true
+					},
+					"wrapping": "truncate",
+					"fixFirstColumn": true
+				},
+				"fieldOptions": [
+					{
+						"internalName": "time",
+						"displayName": "",
+						"visible": true
+					}
+				],
+				"timeFormat": "MM/DD/YYYY HH:mm:ss",
+				"decimalPlaces": {
+					"isEnforced": true,
+					"digits": 2
+				},
+				"note": "",
+				"noteVisibility": "default",
+				"links": {
+					"self": "/chronograf/v1/dashboards/4/cells/93b1210c-de82-4b13-b3e2-0dded488e5dd"
+				}
+			},
+			{
+				"i": "a7efe73f-0c9c-4793-9ef1-9c856b999b93",
+				"x": 2,
+				"y": 1,
+				"w": 2,
+				"h": 1,
+				"name": "total_threads",
+				"queries": [
+					{
+						"query": "SELECT mean(\"total_threads\") AS \"mean_total_threads\" FROM :DB:.\"autogen\".\"processes\" WHERE 
+time > :dashboardTime: AND \"host\"=:host: GROUP BY time(:interval:) FILL(previous)",
+						"queryConfig": {
+							"database": "",
+							"measurement": "",
+							"retentionPolicy": "",
+							"fields": [],
+							"tags": {},
+							"groupBy": {
+								"time": "",
+								"tags": []
+							},
+							"areTagsAccepted": false,
+							"rawText": "SELECT mean(\"total_threads\") AS \"mean_total_threads\" FROM :DB:.\"autogen\".\"processes\" 
+WHERE time > :dashboardTime: AND \"host\"=:host: GROUP BY time(:interval:) FILL(previous)",
+							"range": null,
+							"shifts": null
+						},
+						"source": "",
+						"type": "influxql"
+					}
+				],
+				"axes": {
+					"x": {
+						"bounds": [
+							"",
+							""
+						],
+						"label": "",
+						"prefix": "",
+						"suffix": "",
+						"base": "10",
+						"scale": "linear"
+					},
+					"y": {
+						"bounds": [
+							"",
+							""
+						],
+						"label": "",
+						"prefix": "",
+						"suffix": "",
+						"base": "10",
+						"scale": "linear"
+					},
+					"y2": {
+						"bounds": [
+							"",
+							""
+						],
+						"label": "",
+						"prefix": "",
+						"suffix": "",
+						"base": "10",
+						"scale": "linear"
+					}
+				},
+				"type": "single-stat",
+				"colors": [
+					{
+						"id": "base",
+						"type": "text",
+						"hex": "#00C9FF",
+						"name": "laser",
+						"value": "-1000000000000000000"
+					}
+				],
+				"legend": {},
+				"tableOptions": {
+					"verticalTimeAxis": true,
+					"sortBy": {
+						"internalName": "time",
+						"displayName": "",
+						"visible": true
+					},
+					"wrapping": "truncate",
+					"fixFirstColumn": true
+				},
+				"fieldOptions": [
+					{
+						"internalName": "time",
+						"displayName": "",
+						"visible": true
+					}
+				],
+				"timeFormat": "MM/DD/YYYY HH:mm:ss",
+				"decimalPlaces": {
+					"isEnforced": true,
+					"digits": 2
+				},
+				"note": "",
+				"noteVisibility": "default",
+				"links": {
+					"self": "/chronograf/v1/dashboards/4/cells/a7efe73f-0c9c-4793-9ef1-9c856b999b93"
+				}
+			},
+			{
+				"i": "bbc6dae7-2254-4d46-a0b9-9d6a1bd6930b",
+				"x": 0,
+				"y": 1,
+				"w": 2,
+				"h": 1,
+				"name": "process_total",
+				"queries": [
+					{
+						"query": "SELECT mean(\"total\") AS \"mean_total\" FROM :DB:.\"autogen\".\"processes\" WHERE time > 
+:dashboardTime: AND \"host\"=:host: GROUP BY time(:interval:) FILL(previous)",
+						"queryConfig": {
+							"database": "",
+							"measurement": "",
+							"retentionPolicy": "",
+							"fields": [],
+							"tags": {},
+							"groupBy": {
+								"time": "",
+								"tags": []
+							},
+							"areTagsAccepted": false,
+							"rawText": "SELECT mean(\"total\") AS \"mean_total\" FROM :DB:.\"autogen\".\"processes\" WHERE time > 
+:dashboardTime: AND \"host\"=:host: GROUP BY time(:interval:) FILL(previous)",
+							"range": null,
+							"shifts": null
+						},
+						"source": "",
+						"type": "influxql"
+					}
+				],
+				"axes": {
+					"x": {
+						"bounds": [
+							"",
+							""
+						],
+						"label": "",
+						"prefix": "",
+						"suffix": "",
+						"base": "10",
+						"scale": "linear"
+					},
+					"y": {
+						"bounds": [
+							"",
+							""
+						],
+						"label": "",
+						"prefix": "",
+						"suffix": "",
+						"base": "raw",
+						"scale": "linear"
+					},
+					"y2": {
+						"bounds": [
+							"",
+							""
+						],
+						"label": "",
+						"prefix": "",
+						"suffix": "",
+						"base": "10",
+						"scale": "linear"
+					}
+				},
+				"type": "single-stat",
+				"colors": [
+					{
+						"id": "base",
+						"type": "text",
+						"hex": "#00C9FF",
+						"name": "laser",
+						"value": "-1000000000000000000"
+					}
+				],
+				"legend": {},
+				"tableOptions": {
+					"verticalTimeAxis": true,
+					"sortBy": {
+						"internalName": "time",
+						"displayName": "",
+						"visible": true
+					},
+					"wrapping": "truncate",
+					"fixFirstColumn": true
+				},
+				"fieldOptions": [
+					{
+						"internalName": "time",
+						"displayName": "",
+						"visible": true
+					}
+				],
+				"timeFormat": "MM/DD/YYYY HH:mm:ss",
+				"decimalPlaces": {
+					"isEnforced": true,
+					"digits": 2
+				},
+				"note": "",
+				"noteVisibility": "default",
+				"links": {
+					"self": "/chronograf/v1/dashboards/4/cells/bbc6dae7-2254-4d46-a0b9-9d6a1bd6930b"
+				}
+			},
+			{
+				"i": "39598531-4663-4475-9925-2db960ade782",
+				"x": 6,
+				"y": 1,
+				"w": 2,
+				"h": 1,
+				"name": "mem_total_GB",
+				"queries": [
+					{
+						"query": "SELECT mean(\"total\")/1024/1024/1024 AS \"mean_total\" FROM :DB:.\"autogen\".\"mem\" WHERE time > 
+:dashboardTime: AND \"host\"=:host: GROUP BY time(:interval:) FILL(previous)",
+						"queryConfig": {
+							"database": "",
+							"measurement": "",
+							"retentionPolicy": "",
+							"fields": [],
+							"tags": {},
+							"groupBy": {
+								"time": "",
+								"tags": []
+							},
+							"areTagsAccepted": false,
+							"rawText": "SELECT mean(\"total\")/1024/1024/1024 AS \"mean_total\" FROM :DB:.\"autogen\".\"mem\" WHERE 
+time > :dashboardTime: AND \"host\"=:host: GROUP BY time(:interval:) FILL(previous)",
+							"range": null,
+							"shifts": null
+						},
+						"source": "",
+						"type": "influxql"
+					}
+				],
+				"axes": {
+					"x": {
+						"bounds": [
+							"",
+							""
+						],
+						"label": "",
+						"prefix": "",
+						"suffix": "",
+						"base": "10",
+						"scale": "linear"
+					},
+					"y": {
+						"bounds": [
+							"",
+							""
+						],
+						"label": "",
+						"prefix": "",
+						"suffix": " GB",
+						"base": "2",
+						"scale": "linear"
+					},
+					"y2": {
+						"bounds": [
+							"",
+							""
+						],
+						"label": "",
+						"prefix": "",
+						"suffix": "",
+						"base": "10",
+						"scale": "linear"
+					}
+				},
+				"type": "single-stat",
+				"colors": [
+					{
+						"id": "base",
+						"type": "text",
+						"hex": "#00C9FF",
+						"name": "laser",
+						"value": "-1000000000000000000"
+					}
+				],
+				"legend": {},
+				"tableOptions": {
+					"verticalTimeAxis": true,
+					"sortBy": {
+						"internalName": "time",
+						"displayName": "",
+						"visible": true
+					},
+					"wrapping": "truncate",
+					"fixFirstColumn": true
+				},
+				"fieldOptions": [
+					{
+						"internalName": "time",
+						"displayName": "",
+						"visible": true
+					}
+				],
+				"timeFormat": "MM/DD/YYYY HH:mm:ss",
+				"decimalPlaces": {
+					"isEnforced": true,
+					"digits": 2
+				},
+				"note": "",
+				"noteVisibility": "default",
+				"links": {
+					"self": "/chronograf/v1/dashboards/4/cells/39598531-4663-4475-9925-2db960ade782"
+				}
+			},
+			{
+				"i": "adbd96ce-47a4-4596-83ca-6693463583de",
+				"x": 6,
+				"y": 0,
+				"w": 2,
+				"h": 1,
+				"name": "disk_total_GB",
+				"queries": [
+					{
+						"query": "SELECT mean(\"total\")/1024/1024/1024 AS \"mean_total\" FROM :DB:.\"autogen\".\"disk\" WHERE time > 
+:dashboardTime: AND \"host\"=:host: GROUP BY time(:interval:) FILL(previous)",
+						"queryConfig": {
+							"database": "",
+							"measurement": "",
+							"retentionPolicy": "",
+							"fields": [],
+							"tags": {},
+							"groupBy": {
+								"time": "",
+								"tags": []
+							},
+							"areTagsAccepted": false,
+							"rawText": "SELECT mean(\"total\")/1024/1024/1024 AS \"mean_total\" FROM :DB:.\"autogen\".\"disk\" WHERE 
+time > :dashboardTime: AND \"host\"=:host: GROUP BY time(:interval:) FILL(previous)",
+							"range": null,
+							"shifts": null
+						},
+						"source": "",
+						"type": "influxql"
+					}
+				],
+				"axes": {
+					"x": {
+						"bounds": [
+							"",
+							""
+						],
+						"label": "",
+						"prefix": "",
+						"suffix": "",
+						"base": "10",
+						"scale": "linear"
+					},
+					"y": {
+						"bounds": [
+							"",
+							""
+						],
+						"label": "",
+						"prefix": "",
+						"suffix": " GB",
+						"base": "2",
+						"scale": "linear"
+					},
+					"y2": {
+						"bounds": [
+							"",
+							""
+						],
+						"label": "",
+						"prefix": "",
+						"suffix": "",
+						"base": "10",
+						"scale": "linear"
+					}
+				},
+				"type": "single-stat",
+				"colors": [
+					{
+						"id": "base",
+						"type": "text",
+						"hex": "#00C9FF",
+						"name": "laser",
+						"value": "-1000000000000000000"
+					}
+				],
+				"legend": {},
+				"tableOptions": {
+					"verticalTimeAxis": true,
+					"sortBy": {
+						"internalName": "time",
+						"displayName": "",
+						"visible": true
+					},
+					"wrapping": "truncate",
+					"fixFirstColumn": true
+				},
+				"fieldOptions": [
+					{
+						"internalName": "time",
+						"displayName": "",
+						"visible": true
+					}
+				],
+				"timeFormat": "MM/DD/YYYY HH:mm:ss",
+				"decimalPlaces": {
+					"isEnforced": true,
+					"digits": 2
+				},
+				"note": "",
+				"noteVisibility": "default",
+				"links": {
+					"self": "/chronograf/v1/dashboards/4/cells/adbd96ce-47a4-4596-83ca-6693463583de"
+				}
+			},
+			{
+				"i": "0e9e08ae-fbd7-44d8-b7bf-aeaff30b8a18",
+				"x": 4,
+				"y": 0,
+				"w": 2,
+				"h": 1,
+				"name": "cpu_usage_user",
+				"queries": [
+					{
+						"query": "SELECT mean(\"usage_user\") AS \"mean_usage_user\" FROM :DB:.\"autogen\".\"cpu\" WHERE time > 
+:dashboardTime: AND \"host\"=:host: GROUP BY time(:interval:) FILL(previous)",
+						"queryConfig": {
+							"database": "",
+							"measurement": "",
+							"retentionPolicy": "",
+							"fields": [],
+							"tags": {},
+							"groupBy": {
+								"time": "",
+								"tags": []
+							},
+							"areTagsAccepted": false,
+							"rawText": "SELECT mean(\"usage_user\") AS \"mean_usage_user\" FROM :DB:.\"autogen\".\"cpu\" WHERE time 
+> :dashboardTime: AND \"host\"=:host: GROUP BY time(:interval:) FILL(previous)",
+							"range": null,
+							"shifts": null
+						},
+						"source": "",
+						"type": "influxql"
+					}
+				],
+				"axes": {
+					"x": {
+						"bounds": [
+							"",
+							""
+						],
+						"label": "",
+						"prefix": "",
+						"suffix": "",
+						"base": "10",
+						"scale": "linear"
+					},
+					"y": {
+						"bounds": [
+							"",
+							""
+						],
+						"label": "",
+						"prefix": "",
+						"suffix": " %",
+						"base": "raw",
+						"scale": "linear"
+					},
+					"y2": {
+						"bounds": [
+							"",
+							""
+						],
+						"label": "",
+						"prefix": "",
+						"suffix": "",
+						"base": "10",
+						"scale": "linear"
+					}
+				},
+				"type": "single-stat",
+				"colors": [
+					{
+						"id": "base",
+						"type": "background",
+						"hex": "#4ED8A0",
+						"name": "rainforest",
+						"value": "-1000000000000000000"
+					},
+					{
+						"id": "acca40f8-eb1b-4784-b1a5-fe0380aca035",
+						"type": "background",
+						"hex": "#FFD255",
+						"name": "thunder",
+						"value": "70"
+					},
+					{
+						"id": "aad3a92b-7143-45bd-b910-39a1235b2f7a",
+						"type": "background",
+						"hex": "#F95F53",
+						"name": "curacao",
+						"value": "80"
+					},
+					{
+						"id": "93301e03-bb7b-45d7-adfe-566efa2cac93",
+						"type": "background",
+						"hex": "#DC4E58",
+						"name": "fire",
+						"value": "95"
+					}
+				],
+				"legend": {},
+				"tableOptions": {
+					"verticalTimeAxis": true,
+					"sortBy": {
+						"internalName": "time",
+						"displayName": "",
+						"visible": true
+					},
+					"wrapping": "truncate",
+					"fixFirstColumn": true
+				},
+				"fieldOptions": [
+					{
+						"internalName": "time",
+						"displayName": "",
+						"visible": true
+					}
+				],
+				"timeFormat": "MM/DD/YYYY HH:mm:ss",
+				"decimalPlaces": {
+					"isEnforced": true,
+					"digits": 2
+				},
+				"note": "",
+				"noteVisibility": "default",
+				"links": {
+					"self": "/chronograf/v1/dashboards/4/cells/0e9e08ae-fbd7-44d8-b7bf-aeaff30b8a18"
+				}
+			},
+			{
+				"i": "f9459eaa-de1f-4d4b-be0c-41d69494cef7",
+				"x": 0,
+				"y": 0,
+				"w": 2,
+				"h": 1,
+				"name": "uptime",
+				"queries": [
+					{
+						"query": "SELECT last(\"uptime\")/86400 AS \"mean_uptime\" FROM :DB:.\"autogen\".\"system\" WHERE time > 
+:dashboardTime: AND \"host\" = :host: FILL(previous)",
+						"queryConfig": {
+							"database": "",
+							"measurement": "",
+							"retentionPolicy": "",
+							"fields": [],
+							"tags": {},
+							"groupBy": {
+								"time": "",
+								"tags": []
+							},
+							"areTagsAccepted": false,
+							"rawText": "SELECT last(\"uptime\")/86400 AS \"mean_uptime\" FROM :DB:.\"autogen\".\"system\" WHERE time 
+> :dashboardTime: AND \"host\" = :host: FILL(previous)",
+							"range": null,
+							"shifts": null
+						},
+						"source": "",
+						"type": "influxql"
+					}
+				],
+				"axes": {
+					"x": {
+						"bounds": [
+							"",
+							""
+						],
+						"label": "",
+						"prefix": "",
+						"suffix": "",
+						"base": "10",
+						"scale": "linear"
+					},
+					"y": {
+						"bounds": [
+							"",
+							""
+						],
+						"label": "",
+						"prefix": "",
+						"suffix": " days",
+						"base": "10",
+						"scale": "linear"
+					},
+					"y2": {
+						"bounds": [
+							"",
+							""
+						],
+						"label": "",
+						"prefix": "",
+						"suffix": "",
+						"base": "10",
+						"scale": "linear"
+					}
+				},
+				"type": "single-stat",
+				"colors": [
+					{
+						"id": "base",
+						"type": "text",
+						"hex": "#00C9FF",
+						"name": "laser",
+						"value": "-1000000000000000000"
+					}
+				],
+				"legend": {},
+				"tableOptions": {
+					"verticalTimeAxis": true,
+					"sortBy": {
+						"internalName": "time",
+						"displayName": "",
+						"visible": true
+					},
+					"wrapping": "truncate",
+					"fixFirstColumn": true
+				},
+				"fieldOptions": [
+					{
+						"internalName": "time",
+						"displayName": "",
+						"visible": true
+					}
+				],
+				"timeFormat": "MM/DD/YYYY HH:mm:ss",
+				"decimalPlaces": {
+					"isEnforced": true,
+					"digits": 2
+				},
+				"note": "",
+				"noteVisibility": "default",
+				"links": {
+					"self": "/chronograf/v1/dashboards/4/cells/f9459eaa-de1f-4d4b-be0c-41d69494cef7"
+				}
+			},
+			{
+				"i": "7bde747b-2757-4c32-b7e8-1e29bb91d445",
+				"x": 2,
+				"y": 0,
+				"w": 2,
+				"h": 1,
+				"name": "N_cpus",
+				"queries": [
+					{
+						"query": "SELECT mean(\"n_cpus\") AS \"mean_n_cpus\" FROM :DB:.\"autogen\".\"system\" WHERE time > 
+:dashboardTime: AND \"host\"=:host: GROUP BY time(:interval:) FILL(previous)",
+						"queryConfig": {
+							"database": "",
+							"measurement": "",
+							"retentionPolicy": "",
+							"fields": [],
+							"tags": {},
+							"groupBy": {
+								"time": "",
+								"tags": []
+							},
+							"areTagsAccepted": false,
+							"rawText": "SELECT mean(\"n_cpus\") AS \"mean_n_cpus\" FROM :DB:.\"autogen\".\"system\" WHERE time > 
+:dashboardTime: AND \"host\"=:host: GROUP BY time(:interval:) FILL(previous)",
+							"range": null,
+							"shifts": null
+						},
+						"source": "",
+						"type": "influxql"
+					}
+				],
+				"axes": {
+					"x": {
+						"bounds": [
+							"",
+							""
+						],
+						"label": "",
+						"prefix": "",
+						"suffix": "",
+						"base": "10",
+						"scale": "linear"
+					},
+					"y": {
+						"bounds": [
+							"",
+							""
+						],
+						"label": "",
+						"prefix": "",
+						"suffix": "",
+						"base": "10",
+						"scale": "linear"
+					},
+					"y2": {
+						"bounds": [
+							"",
+							""
+						],
+						"label": "",
+						"prefix": "",
+						"suffix": "",
+						"base": "10",
+						"scale": "linear"
+					}
+				},
+				"type": "single-stat",
+				"colors": [
+					{
+						"id": "base",
+						"type": "text",
+						"hex": "#00C9FF",
+						"name": "laser",
+						"value": "-1000000000000000000"
+					}
+				],
+				"legend": {},
+				"tableOptions": {
+					"verticalTimeAxis": true,
+					"sortBy": {
+						"internalName": "time",
+						"displayName": "",
+						"visible": true
+					},
+					"wrapping": "truncate",
+					"fixFirstColumn": true
+				},
+				"fieldOptions": [
+					{
+						"internalName": "time",
+						"displayName": "",
+						"visible": true
+					}
+				],
+				"timeFormat": "MM/DD/YYYY HH:mm:ss",
+				"decimalPlaces": {
+					"isEnforced": true,
+					"digits": 2
+				},
+				"note": "",
+				"noteVisibility": "default",
+				"links": {
+					"self": "/chronograf/v1/dashboards/4/cells/7bde747b-2757-4c32-b7e8-1e29bb91d445"
+				}
+			}
+		],
+		"templates": [
+			{
+				"tempVar": ":host:",
+				"values": [
+					{
+						"value": "host_192.168.85.79",
+						"type": "tagValue",
+						"selected": true
+					}
+				],
+				"id": "46d4ea37-725d-4869-b533-4b7f3e83899a",
+				"type": "tagValues",
+				"label": "",
+				"query": {
+					"influxql": "SHOW TAG VALUES ON :database: FROM :measurement: WITH KEY=:tagKey:",
+					"db": "{{ database }}",
+					"measurement": "cpu",
+					"tagKey": "host",
+					"fieldKey": ""
+				},
+				"links": {
+					"self": "/chronograf/v1/dashboards/4/templates/46d4ea37-725d-4869-b533-4b7f3e83899a"
+				}
+			},
+			{
+				"tempVar": ":interface:",
+				"values": [],
+				"id": "9bad3f2d-f0ad-4e38-b7e3-da2b2aff5610",
+				"type": "tagValues",
+				"label": "",
+				"query": {
+					"influxql": "SHOW TAG VALUES ON :database: FROM :measurement: WITH KEY=:tagKey:",
+					"db": "{{ database }}",
+					"measurement": "net",
+					"tagKey": "interface",
+					"fieldKey": ""
+				},
+				"links": {
+					"self": "/chronograf/v1/dashboards/4/templates/9bad3f2d-f0ad-4e38-b7e3-da2b2aff5610"
+				}
+			},
+			{
+				"tempVar": ":DB:",
+				"values": [
+					{
+						"value": {{ database }}",
+						"type": "database",
+						"selected": true
+					}
+				],
+				"id": "78bc3174-4573-4187-aaca-5042106225b4",
+				"type": "databases",
+				"label": "",
+				"query": {
+					"influxql": "SHOW DATABASES",
+					"measurement": "",
+					"tagKey": "",
+					"fieldKey": ""
+				},
+				"links": {
+					"self": "/chronograf/v1/dashboards/4/templates/78bc3174-4573-4187-aaca-5042106225b4"
+				}
+			}
+		],
+		"name": "teste",
+		"organization": "default",
+		"links": {
+			"self": "/chronograf/v1/dashboards/4",
+			"cells": "/chronograf/v1/dashboards/4/cells",
+			"templates": "/chronograf/v1/dashboards/4/templates"
+		}
+	}
+}
