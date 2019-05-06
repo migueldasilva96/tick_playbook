@@ -177,8 +177,20 @@ Password: telegraf (definido por defeito, podendo ser alterados no ficheiro ./ti
 
 #### Chronograf
 
-1- 
+1- Aceder no browser à página inicial do Chronograf. Para aceder à página, deverá introduzir o endereço ip da máquina na qual este se encontra instalado, seguido da porta de acesso (porta 8888 por defeito). Contrariamente ao Grafana este não requere a autenticação do utilizador, podendo porém serem criados posteriormente utilizadores com diferentes permissões.
 
+![](chrono_home.gif)
+
+2- Verificar as configurações do data source (influxdb) e do agente responsável pelos alertas (kapacitor):
+```
+Esta configuração é definida através de variáveis na configuração da plataforma.
+```
+
+|[](chrchono_config.gif)
+
+3- Aceder ás dashboards. Verificar os scripts de alerta. (Assim como no Grafana, as dashboards e os scripts de alerta do Chronograf, são importados no momento da instalação, mediante parâmetros previamente configurados)
+
+![](chrono_dash.gif)
 
 ## Built With
 
