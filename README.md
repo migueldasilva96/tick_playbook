@@ -23,6 +23,7 @@ O conjunto de instruções que se seguem prevêm a instalação e configuração
 - docker-ce
 - docker-ce-cli
 - containerd.io
+- sshpass
 ```
 
 ### Estrutura de ficheiros
@@ -40,6 +41,22 @@ O conjunto de instruções que se seguem prevêm a instalação e configuração
             ├── main.yml
         └── vars
             ├── main.yml
+    └── alertas
+        └── template
+            ├── run_alertas.sh.j2
+        └── tasks
+            ├── main.yml
+        └── tickscripts
+            ├── cpu_usage_system_stream.tick
+            ├── cpu_usage_user_stream.tick
+            ├── dead_cpu.tick
+            ├── disk_use_stream.tick
+            ├── mem_used_stream.tick
+            ├── net_bytes_recived_stream.tick
+            ├── net_bytes_sent_stream.tick
+            ├── system_dead_deadman.tick
+        └── vars
+            ├── main.yml
     └── influxdb
         └── files
             ├── influxdb.conf
@@ -50,11 +67,27 @@ O conjunto de instruções que se seguem prevêm a instalação e configuração
     └── chronograf
         └── tasks
             ├── main.yml
+        └── canned
+            ├── complete_dashboard.json
+            ├── simpledashboard.json
+    └── chronograf_dsahboard_deploy
+        └── dashboards
+            ├── complete_dashboard.json.j2
+            ├── simple_dashboards.json.j2
+            ├── teste.json.j2
+        └── tasks
+            ├── main.yml
+        └── template
+            ├── import_dashboard.sh.j2
+        └── vars
+            ├── main.yml
     └── kapacitor
         └── files
             ├── kapacitor.conf
         └── tasks
             ├── main.yml
+        └── templates
+            ├── kapacitor.conf.j2
     └── grafana
         └── files
             ├── dashboard.yaml
@@ -82,9 +115,9 @@ $cd tick_playbook
 
 ![](git_clone.gif)
 
-2- Executar o playbook e introduzir o endereço ip do host de destino:
+2- Executar o playbook (playbook.yml) e introduzir o endereço ip do host de destino:
 ```
-$ sudo ansible-playbook -K -u [username do host de destino] playbook.yml --ask-pass
+$ sudo ansible-playbook -u [username do host de destino] playbook.yml --ask-pass
 ```
 
 ![](host.gif)
@@ -96,33 +129,38 @@ $ sudo ansible-playbook -K -u [username do host de destino] playbook.yml --ask-p
 4- Mediante a escolha selecionada, serão instaladas as ferramentas pretendidas:
 
 ![](setup.gif)
+
+A instalação do agente Telegraf é necessária, sendo que a instalação do mesmo se encontra definida num playbook em separado, tendo em conta que o mesmo poderá ser este instaldo na mesma máquina ou em terminais separados.
+
+1- Executar o playbook (telegraf.yml) e introduzir o/s endereço/s ip do/s host/s de destino:
+(caso se pretenda instalar em várias máquinas em simultâneo, os endereços ip introduzidos deverão ser separados por vírgulas. Ex.: 192.168.1.1,192.168.1.2)
 ```
-Give the example
+$sudo ansible-playbook -u [username do host de destino] telegraf.yml --ask-pass
+```
+![](telegraf_setup.gif)
+
+2 - Introduzir o endereço ip do InfluxDB no qual serão armazenados os dados coletados:
+
+![](ip_idb.gif)
+
+3- Aguardar a conclusão da instalação.
+
+![](telegraf_finish.gif)
+
+
+### Configuração plataforma Grafana/Chronograf
+
+Após efetuada a instalação dos diferentes componentes pretendidos, é necessária efetuar a configuração das ferramentas de visualização de dados, mediante os que foram escolhidos (ambos ou apenas um deles).
+
+#### Grafana
+
+1- Aceder no browser à página inicial do Grafana. Para aceder à página, deverá introduzir o endereço ip da máquina na qual este se encontra instalado, seguido da porta de acesso (porta 3000 por defeito) e efetuar login com as credênciais de administrador:
+```
+username: admin
+password: admin
 ```
 
-And repeat
-
-```
-until finished
-```
-
-End with an example of getting some data out of the system or using it for a little demo
-
-## Running the tests
-
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
+![](grafana_home.gif)
 
 ```
 Give an example
