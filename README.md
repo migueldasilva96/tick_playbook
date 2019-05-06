@@ -186,7 +186,7 @@ Password: telegraf (definido por defeito, podendo ser alterados no ficheiro ./ti
 Esta configuração é definida através de variáveis na configuração da plataforma.
 ```
 
-|[](chrchono_config.gif)
+|[](chrono_config.gif)
 
 3- Aceder ás dashboards. Verificar os scripts de alerta. (Assim como no Grafana, as dashboards e os scripts de alerta do Chronograf, são importados no momento da instalação, mediante parâmetros previamente configurados)
 
