@@ -162,13 +162,23 @@ password: admin
 
 ![](grafana_home.gif)
 
+2- Configurar a fonte dos dados (data source). Para este caso em específico o tipo de data source a selecionar será o InfluxDB, no qual serão configurados o ip da máquina em que se encontra o influxdb instalado, o nome da base de dados bem como o utilizador e a password correspondentes:
 ```
-Give an example
+HTTP URL: http://[endereço ip influxdb):8086
+Database: db0 (definido por defeito, podendo ser alterados no ficheiro ./tick_playbook/roles/influxdb/vars/main.yml)
+User: telegraf (definido por defeito, podendo ser alterados no ficheiro ./tick_playbook/roles/influxdb/vars/main.yml)
+Password: telegraf (definido por defeito, podendo ser alterados no ficheiro ./tick_playbook/roles/influxdb/vars/main.yml)
 ```
+![](grafana_data_source.gif)
 
-## Deployment
+3- Aceder à aba Dashboards para visualização dos dados coletados. Com a instalação do Grafana são importadas um conjunto de dashboards padrão, previamente configuradas e implementadas no momento da instalação.
 
-Add additional notes about how to deploy this on a live system
+![](grafana_dashboards.gif)
+
+#### Chronograf
+
+1- 
+
 
 ## Built With
 
