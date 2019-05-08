@@ -26,6 +26,26 @@ O conjunto de instruções que se seguem prevêm a instalação e configuração
 - sshpass
 ```
 
+Para além das dependências mencionadas acima, é ainda necessária a instalação do ansible, ferramenta essencial para a instalação dos diferentes componentes:
+
+- Ubuntu based distro:
+```
+$ sudo apt-get update
+$ sudo apt-get install software-properties-common
+$ sudo apt-add-repository ppa:ansible/ansible
+$ sudo apt-get update
+$ sudo apt-get install ansible
+```
+
+- Debian:
+```
+$ echo 'deb http://ppa.launchpad.net/ansible/ansible/ubuntu trusty main' >> /etc/apt/sources.list
+$ apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 93C4A3FD7BB9C367
+$ apt-get update
+$ apt-get install ansible
+```
+
+
 ### Estrutura de ficheiros
 
 ```
@@ -164,7 +184,7 @@ password: admin
 
 2- Configurar a fonte dos dados (data source). Para este caso em específico o tipo de data source a selecionar será o InfluxDB, no qual serão configurados o ip da máquina em que se encontra o influxdb instalado, o nome da base de dados bem como o utilizador e a password correspondentes:
 ```
-HTTP URL: http://[endereço ip influxdb):8086
+HTTP URL: http://[endereço ip influxdb]:8086
 Database: db0 (definido por defeito, podendo ser alterados no ficheiro ./tick_playbook/roles/influxdb/vars/main.yml)
 User: telegraf (definido por defeito, podendo ser alterados no ficheiro ./tick_playbook/roles/influxdb/vars/main.yml)
 Password: telegraf (definido por defeito, podendo ser alterados no ficheiro ./tick_playbook/roles/influxdb/vars/main.yml)
