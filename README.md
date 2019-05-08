@@ -87,9 +87,6 @@ $ apt-get install ansible
     └── chronograf
         └── tasks
             ├── main.yml
-        └── canned
-            ├── complete_dashboard.json
-            ├── simpledashboard.json
     └── chronograf_dsahboard_deploy
         └── dashboards
             ├── complete_dashboard.json.j2
