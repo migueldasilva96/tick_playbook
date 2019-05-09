@@ -5,11 +5,11 @@ com o presente projeto, implementar uma plataforma de monitorização de sistema
 
 ## Getting Started
 
-O conjunto de instruções que se seguem prevêm a instalação e configuração automática, recorrendo à ferramenta Ansible, de toda a plataforma de monitorização (TICK Stack (Telegraf, InfluxDB, Chronograf, Kapacitor) + Grafana), execuntando as diferentes instâncias da plataforma em containers Docker.
+O conjunto de instruções que se seguem preveem a instalação e configuração automática, recorrendo à ferramenta Ansible, de toda a plataforma de monitorização (TICK Stack (Telegraf, InfluxDB, Chronograf, Kapacitor) + Grafana), executando as diferentes instâncias da plataforma em containers Docker.
 
 ### Pré-Requisitos
 
-- Para o correto funcionameto e instalação dos diferentes componentes, existe um conjunto de pacotes que devem estar presentes no terminal em cujas diferentes ferramentas serão executadas:
+- Para o correto funcionamento e instalação dos diferentes componentes, existe um conjunto de pacotes que devem estar presentes no terminal em cujas diferentes ferramentas serão executadas:
 
 ```
 - apt-transport-https
@@ -124,7 +124,7 @@ $ apt-get install ansible
 
 ### Instalação
 
-1- Efetuar o clone do repositório do github que contêm os ficheiros:
+1- Efetuar o clone do repositório do github que contém os ficheiros:
 ```
 $git clone https://github.com/hfrpinto/tick_playbook.git
 $cd tick_playbook
@@ -147,7 +147,7 @@ $ sudo ansible-playbook -u [username do host de destino] playbook.yml --ask-pass
 
 ![](setup.gif)
 
-A instalação do agente Telegraf é necessária, sendo que a instalação do mesmo se encontra definida num playbook em separado, tendo em conta que o mesmo poderá ser este instaldo na mesma máquina ou em terminais separados.
+A instalação do agente Telegraf é necessária, sendo que a instalação do mesmo se encontra definida num playbook em separado, tendo em conta que o mesmo poderá ser este instalado na mesma máquina ou em terminais separados.
 
 1- Executar o playbook (telegraf.yml) e introduzir o/s endereço/s ip do/s host/s de destino:
 (caso se pretenda instalar em várias máquinas em simultâneo, os endereços ip introduzidos deverão ser separados por vírgulas. Ex.: 192.168.1.1,192.168.1.2)
@@ -171,7 +171,7 @@ Após efetuada a instalação dos diferentes componentes pretendidos, é necess�
 
 #### Grafana
 
-1- Aceder no browser à página inicial do Grafana. Para aceder à página, deverá introduzir o endereço ip da máquina na qual este se encontra instalado, seguido da porta de acesso (porta 3000 por defeito) e efetuar login com as credênciais de administrador:
+1- Aceder no browser à página inicial do Grafana. Para aceder à página, deverá introduzir o endereço ip da máquina na qual este se encontra instalado, seguido da porta de acesso (porta 3000 por defeito) e efetuar login com as credenciais de administrador:
 ```
 username: admin
 password: admin
@@ -205,7 +205,7 @@ Esta configuração é definida através de variáveis na configuração da plat
 
 ![](chrono_config.gif)
 
-3- Aceder ás dashboards. Verificar os scripts de alerta. (Assim como no Grafana, as dashboards e os scripts de alerta do Chronograf, são importados no momento da instalação, mediante parâmetros previamente configurados)
+3- Aceder às dashboards. Verificar os scripts de alerta. (Assim como no Grafana, as dashboards e os scripts de alerta do Chronograf, são importados no momento da instalação, mediante parâmetros previamente configurados)
 
 ![](chrono_dash.gif)
 
@@ -214,3 +214,4 @@ Esta configuração é definida através de variáveis na configuração da plat
 * [Docker](https://docs.docker.com/)
 * [Ansible](https://docs.ansible.com/)
 * [Influxdata](https://docs.influxdata.com/)
+* [Grafana](https://docs.influxdata.com/) ![](grafana.png)
