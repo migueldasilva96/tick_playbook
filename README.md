@@ -211,7 +211,7 @@ Esta configuração é definida através de variáveis na configuração da plat
 
 ## Built With
 
-* [Docker](https://docs.docker.com/) ![](docker.png)
-* [Ansible](https://docs.ansible.com/) ![](ansible.png)
-* [Influxdata](https://docs.influxdata.com/) ![](influxdata.png)
-* [Grafana](https://docs.influxdata.com/) ![](grafana.png)
+[![](https://github.com/hfrpinto/tick_playbook/raw/master/docker.png)](https://docs.docker.com/)
+[![](https://github.com/hfrpinto/tick_playbook/raw/master/ansible.png)](https://docs.ansible.com/)
+[![](https://github.com/hfrpinto/tick_playbook/raw/master/influxdata.png)](https://docs.influxdata.com/)
+[![](https://github.com/hfrpinto/tick_playbook/raw/master/grafana.png)](https://docs.grafana.com/)
