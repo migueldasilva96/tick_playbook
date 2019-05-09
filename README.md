@@ -211,7 +211,7 @@ Esta configuração é definida através de variáveis na configuração da plat
 
 ## Built With
 
-* [Docker](https://docs.docker.com/)
-* [Ansible](https://docs.ansible.com/)
-* [Influxdata](https://docs.influxdata.com/)
+* [Docker](https://docs.docker.com/) ![](docker.png)
+* [Ansible](https://docs.ansible.com/) ![](ansible.png)
+* [Influxdata](https://docs.influxdata.com/) ![](influxdata.png)
 * [Grafana](https://docs.influxdata.com/) ![](grafana.png)
