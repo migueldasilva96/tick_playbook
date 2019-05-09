@@ -132,9 +132,9 @@ $cd tick_playbook
 
 ![](git_clone.gif)
 
-2- Executar o playbook (playbook.yml) e introduzir o endereço ip do host de destino:
+2- Executar o playbook (playbook.yml) e introduzir o endereço ip, username e password do host de destino:
 ```
-$ sudo ansible-playbook -u [username do host de destino] playbook.yml --ask-pass
+$ sudo ansible-playbook playbook.yml
 ```
 
 ![](host.gif)
@@ -149,10 +149,13 @@ $ sudo ansible-playbook -u [username do host de destino] playbook.yml --ask-pass
 
 A instalação do agente Telegraf é necessária, sendo que a instalação do mesmo se encontra definida num playbook em separado, tendo em conta que o mesmo poderá ser este instalado na mesma máquina ou em terminais separados.
 
-1- Executar o playbook (telegraf.yml) e introduzir o/s endereço/s ip do/s host/s de destino:
-(caso se pretenda instalar em várias máquinas em simultâneo, os endereços ip introduzidos deverão ser separados por vírgulas. Ex.: 192.168.1.1,192.168.1.2)
+1- Executar o playbook (telegraf.yml) e introduzir o/s endereço/s ip, username/s e password/s do/s host/s de destino:
+(caso se pretenda instalar em várias máquinas em simultâneo, os endereços ip, usernames e passwords introduzidos deverão ser separados por vírgulas. Ex.:
+IP's- 192.168.1.1,192.168.1.2 
+Usernames- dedian,ubuntu
+Passwords- 1234,5678)
 ```
-$sudo ansible-playbook -u [username do host de destino] telegraf.yml --ask-pass
+$sudo ansible-playbook telegraf.yml
 ```
 ![](telegraf_setup.gif)
 
