@@ -1,4 +1,9 @@
-- name: "##############Adicionar chave repositório Docker##############"
+- name: "##############REPOSITORY UPDATE ESSENTIALS##############"
+  apt: name={{ item }}
+  with_items:
+    - apt-transport-https
+
+- name: "##############ADDING DOCKER REPOSITORY KEY##############"
   apt_key:
     url: https://download.docker.com/linux/ubuntu/gpg
     state: present
@@ -7,14 +12,13 @@
    repo: deb https://download.docker.com/linux/ubuntu bionic stable
    state: present
 
-- name: "##############Atualização de repositórios##############"
+- name: "##############UPDATING REPOSITORYS##############"
   apt:
     update_cache: yes
 
-- name: "##############Instalação pacotes essenciais##############"
+- name: "##############INSTALLING ESSENTIAL PACKAGES##############"
   apt: name={{ item }}
   with_items:
-    - apt-transport-https
     - ca-certificates
     - curl
     - gnupg-agent

@@ -3,19 +3,33 @@
   gather_facts: no
   vars_prompt:
   - name: target_host
-    prompt: "INSIRA O ENDEREÇO IP DO HOST DE DESTINO"
+    prompt: "INSERT DESTINATION IP ADDRESS"
+    private: no
+  - name: target_user
+    prompt: "INSERT THE USERNAME"
+    private: no
+  - name: target_pass
+    prompt: "INSERT THE USER'S PASSWORD"
     private: no
   tasks:
     - add_host:
-        name: "{{ item }}"
+        name: "{{target_host}}"
+        ansible_connection: ssh
+        ansible_user: "{{target_user}}"
+        ansible_ssh_pass: "{{target_pass}}"
+        ansible_ssh_host_key_checking: False
         groups: dynamically_created_hosts
-      with_items: "{{ target_host.split(',') }}"
-
+        state: present
+      
 - hosts: dynamically_created_hosts
   become: true
   vars_prompt:
     - name: influxdb_host
       private: no
-      prompt: "INSIRA O ENDEREÇO DO HOST DO INLUXDB (Ex.: 192.168.0.1)"
+      prompt: "INTRODUCE INFLUXDB HOST IP (Ex.: 192.168.0.1)"
   roles:
+    - dependencies
     - telegraf
+
+
+

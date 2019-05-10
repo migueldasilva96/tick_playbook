@@ -1,15 +1,15 @@
 - include_vars: main.yml
 
-- name: "################ Copy tickscripts ###################"
+- name: "################COPYING TICKSCRIPTS STEP 1###################"
   copy:
     src: roles/alertas/tickscripts
     dest: /var/lib/docker/volumes/kapacitor_storage/_data/
 
-- name: "################ Copy tickscripts ###################"
+- name: "################COPYING TICKSCRIPTS STEP 2###################"
   template:
     src: roles/alertas/template/run_alertas.sh.j2
     dest: /var/lib/docker/volumes/kapacitor_storage/_data/run_alertas.sh
 
-- name: "################ Execute tickscripts ################"
+- name: "################EXECUTING TICKSCRIPTS################"
   shell: docker exec tick_kapacitor bash /var/lib/kapacitor/run_alertas.sh
 

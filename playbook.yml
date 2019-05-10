@@ -3,26 +3,33 @@
   gather_facts: no
   vars_prompt:
   - name: target_host
-    prompt: "INSIRA O ENDEREÇO IP DO HOST DE DESTINO"
+    prompt: "INSERT DESTINATION IP ADDRESS"
     private: no
+  - name: target_user
+    prompt: "INSERT THE USERNAME"
+    private: no
+  - name: target_pass
+    prompt: "INSERT THE USER'S PASSWORD"
+    private: yes
   tasks:
     - add_host:
         name: "{{ target_host }}"
         groups: dynamically_created_hosts
+        ansible_user: "{{ target_user }}"
+        ansible_ssh_pass: "{{ target_pass }}"
 
 - hosts: dynamically_created_hosts
   become: true
   vars_prompt:
     - name: menu_choice
-      prompt: "Para o correto funcionameto e instalação dos diferentes componentes, existe um conjunto de pacotes que devem estar presentes no terminal em cujas diferentes ferramentas serão executadas.
-        \n(Todas as dependências são instaladas por omissão quando executado o playbook)
+      prompt: "(ALL THE NECESSARY DEPENDENCIES ARE AUTOMATICALLY INSTALLED)
         \n
-        \nEscolha uma das seguintes opções(introduza o valor correspondente à opção):
-            \n1- Install TICK Stack + Grafana
-            \n2- Install Influxdb + Grafana
-            \n3- Install Influxdb + Chronograf + Kapacitor
+        \nPLEASE SELECT ONE OF THE OPTIONS BELOW:
+            \n1- INSTALL TICK STACK + GRAFANA
+            \n2- INSTALL INFLUXDB + GRAFANA
+            \n3- INSTALL INFLUXDB + CHRONOGRAF + KAPACITOR
             \n
-            \nIntroduza a sua escolha"
+            \nINTRODUCE YOUR CHOICE"
       private: no
   roles:
     - dependencies
