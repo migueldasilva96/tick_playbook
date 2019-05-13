@@ -15,12 +15,4 @@
     - chronograf_canned:/usr/share/chronograf/canned
     command: --influxdb-url=http://{{hostvars[inventory_hostname]['ansible_default_ipv4']['address']}}:8086 --kapacitor-url=http://{{hostvars[inventory_hostname]['ansible_default_ipv4']['address']}}:9092
 
-- name: "############### SETTING CHRONOGRAF DASHBOARDS ###############"
-  copy:
-    src: roles/chronograf/canned/simpledashboard.json
-    dest: /var/lib/docker/volumes/chronograf_canned/_data
-    owner: root
-    group: root
-    mode: 0644
-    backup: yes
 
