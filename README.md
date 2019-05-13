@@ -130,22 +130,16 @@ $git clone https://github.com/hfrpinto/tick_playbook.git
 $cd tick_playbook
 ```
 
-![](git_clone.gif)
-
 2- Executar o playbook (playbook.yml) e introduzir o endereço ip, username e password do host de destino:
 ```
 $ sudo ansible-playbook playbook.yml
 ```
 
-![](host.gif)
+3- Escolher uma das opções no menu apresentado.
 
-3- Escolher uma das opções no menu apresentado:
+4- Mediante a escolha selecionada, serão instaladas as ferramentas pretendidas.
 
-![](menu.gif)
-
-4- Mediante a escolha selecionada, serão instaladas as ferramentas pretendidas:
-
-![](setup.gif)
+[![asciicast](https://asciinema.org/a/MUa7XeFFIsYgU9z5FrylSs5Qc.svg)](https://asciinema.org/a/MUa7XeFFIsYgU9z5FrylSs5Qc)
 
 A instalação do agente Telegraf é necessária, sendo que a instalação do mesmo se encontra definida num playbook em separado, tendo em conta que o mesmo poderá ser este instalado na mesma máquina ou em terminais separados.
 
