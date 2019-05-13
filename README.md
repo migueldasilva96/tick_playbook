@@ -143,23 +143,16 @@ $ sudo ansible-playbook playbook.yml
 
 A instalação do agente Telegraf é necessária, sendo que a instalação do mesmo se encontra definida num playbook em separado, tendo em conta que o mesmo poderá ser este instalado na mesma máquina ou em terminais separados.
 
-1- Executar o playbook (telegraf.yml) e introduzir o/s endereço/s ip, username/s e password/s do/s host/s de destino:
-(caso se pretenda instalar em várias máquinas em simultâneo, os endereços ip, usernames e passwords introduzidos deverão ser separados por vírgulas. Ex.:
-IP's- 192.168.1.1,192.168.1.2 
-Usernames- dedian,ubuntu
-Passwords- 1234,5678)
+1- Executar o playbook (telegraf.yml) e introduzir o endereço ip, username e password do host de destino.
 ```
 $sudo ansible-playbook telegraf.yml
 ```
-![](telegraf_setup.gif)
 
-2 - Introduzir o endereço ip do InfluxDB no qual serão armazenados os dados coletados:
-
-![](ip_idb.gif)
+2 - Introduzir o endereço ip do InfluxDB no qual serão armazenados os dados coletados.
 
 3- Aguardar a conclusão da instalação.
 
-![](telegraf_finish.gif)
+[![asciicast](https://asciinema.org/a/JfcX7VF3cSlmJrEhRT3P81jyC.svg)](https://asciinema.org/a/JfcX7VF3cSlmJrEhRT3P81jyC)
 
 
 ### Configuração plataforma Grafana/Chronograf
